@@ -15,8 +15,15 @@
     vertical-align: middle;
 }
 
-.NavText {
+.NavLink {
     text-decoration: none;
+}
+
+.Active i {
+    color:#242424
+}
+
+.NavText {
     vertical-align: middle;
     font-size: 20px;
 }

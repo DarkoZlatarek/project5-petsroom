@@ -10,6 +10,7 @@
 .title {
     font-weight: 800;
     font-size: 35px;
+    letter-spacing: 0.05em;
     color: #242424;
     text-decoration: none;
     vertical-align: middle;

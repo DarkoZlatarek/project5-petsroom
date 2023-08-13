@@ -8,6 +8,10 @@ import appStyles from "../../App.module.css";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 
+
+/**
+ * Variables, data handling methods & error handling code from Moments walkthrough.
+ */
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
     username: "",
@@ -57,7 +61,7 @@ const SignUpForm = () => {
               />
             </Form.Group>
             {errors.username?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
+              <Alert variant="dark" key={idx}>
                 {message}
               </Alert>
             ))}

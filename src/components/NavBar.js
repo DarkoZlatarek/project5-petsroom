@@ -11,7 +11,7 @@ const NavBar = () => {
         <NavLink to="/">
           <Navbar.Brand>
             <img className={styles.logo} src={logo} alt="logo" height="50" />
-            <spam className={styles.title}>PetsRoom</spam>
+            <span className={styles.title}>PetsRoom</span>
           </Navbar.Brand>
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -24,7 +24,7 @@ const NavBar = () => {
               to="/"
             >
               <i className="fa-solid fa-house"></i>
-              <spam className={styles.NavText}>Home</spam>
+              <span className={styles.NavText}>Home</span>
             </NavLink>
             <NavLink
               className={styles.NavLink}
@@ -32,7 +32,7 @@ const NavBar = () => {
               to="/signin"
             >
               <i className="fa-solid fa-right-to-bracket"></i>
-              <spam className={styles.NavText}>Sign in</spam>
+              <span className={styles.NavText}>Sign in</span>
             </NavLink>
             <NavLink
               className={styles.NavLink}
@@ -40,7 +40,7 @@ const NavBar = () => {
               to="/signup"
             >
               <i className="fa-solid fa-user-plus"></i>
-              <spam className={styles.NavText}>Sign up</spam>
+              <span className={styles.NavText}>Sign up</span>
             </NavLink>
           </Nav>
         </Navbar.Collapse>

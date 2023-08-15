@@ -80,7 +80,7 @@ const NavBar = () => {
         className={styles.NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
       >
-        <img src={currentUser?.image} alt="profile"/>
+        <img src={currentUser?.profile_image} alt="profile"/>
         <span className={styles.NavText}>Sign out</span>
       </NavLink>
     </>

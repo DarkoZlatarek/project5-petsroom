@@ -3,10 +3,33 @@ import { Navbar, Container, Nav} from "react-bootstrap";
 import logo from "../assets/logo.png"
 import styles from "../styles/NavBar.module.css"
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import { useCurrentUser, useSetCurrentUser, } from "../contexts/CurrentUserContext";
+import Avatar from "./Avatar";
+import axios from "axios";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
+
+  const handleSignOut = async () => {
+    try {
+      await axios.post('dj-rest-auth/logout/');
+      setCurrentUser(null);
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+
+  const addSignOutIcon = (
+    <NavLink
+      className={styles.NavLink}
+      to="/"
+      onClick={handleSignOut}
+      aria-label="signout"
+    >
+      <i className="fa-solid fa-right-from-bracket"></i>
+    </NavLink>
+  );  
 
   const addPostIcon = (
     <NavLink
@@ -14,8 +37,7 @@ const NavBar = () => {
       activeClassName={styles.Active}
       to="/posts/create"
     >
-      <i className="fa-regular fa-square-plus"></i>
-      <span className={styles.NavText}>Add post</span>
+      <i className="fa-solid fa-circle-plus"></i>
     </NavLink>
   );
 
@@ -26,7 +48,6 @@ const NavBar = () => {
       to="/events/create"
     >
       <i className="fa-regular fa-calendar-plus"></i>
-      <span className={styles.NavText}>Add event</span>
     </NavLink>
   );
 
@@ -36,52 +57,42 @@ const NavBar = () => {
       activeClassName={styles.Active}
       to="/articles/create"
     >
-      <i className="fa-regular fa-file-circle-plus"></i>
-      <span className={styles.NavText}>Add article</span>
+      <i className="fa-solid fa-file-circle-plus"></i>
     </NavLink>
   );
 
 
   const loggedInIcons = (
     <>
+      {currentUser && addEventIcon}
+      {currentUser && addArticleIcon}
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/events"
       >
-        <i className="fa-regular fa-dog"></i>
-        <span className={styles.NavText}>Events</span>
+        <i className="fa-regular fa-calendar-days"></i>
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/articles"
       >
-        <i className="fa-regular fa-file-lines"></i>
-        <span className={styles.NavText}>Articles</span>
+        <i className="fa-solid fa-file-lines"></i>
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/followers"
       >
-        <i className="fa-regular fa-users"></i>
-        <span className={styles.NavText}>Followers</span>
+        <i className="fa-solid fa-users"></i>
       </NavLink>
-      <NavLink
-        className={styles.NavLink}
-        to="/"
-        onClick={() => {}}
-      >
-        <i className="fa-regular fa-right-from-bracket"></i>
-        <span className={styles.NavText}>Sign out</span>
-      </NavLink>
+
       <NavLink
         className={styles.NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
       >
-        <img src={currentUser?.profile_image} alt="profile"/>
-        <span className={styles.NavText}>Sign out</span>
+        <Avatar src={currentUser?.profile_image} text={currentUser?.username} height={40} />
       </NavLink>
     </>
   );
@@ -94,7 +105,6 @@ const NavBar = () => {
         to="/signin"
       >
         <i className="fa-solid fa-right-to-bracket"></i>
-        <span className={styles.NavText}>Sign in</span>
       </NavLink>
       <NavLink
         className={styles.NavLink}
@@ -102,7 +112,6 @@ const NavBar = () => {
         to="/signup"
       >
         <i className="fa-solid fa-user-plus"></i>
-        <span className={styles.NavText}>Sign up</span>
       </NavLink>
     </>
   );
@@ -116,9 +125,7 @@ const NavBar = () => {
             <span className={styles.title}>PetsRoom</span>
           </Navbar.Brand>
         </NavLink>
-        {currentUser ?? addPostIcon}
-        {currentUser ?? addEventIcon}
-        {currentUser ?? addArticleIcon}
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-right">
@@ -129,9 +136,11 @@ const NavBar = () => {
               to="/"
             >
               <i className="fa-solid fa-house"></i>
-              <span className={styles.NavText}>Home</span>
             </NavLink>
-              {currentUser ? loggedInIcons : loggedOutIcons}
+            {currentUser && addPostIcon}
+            {currentUser ? loggedInIcons : loggedOutIcons}
+            {currentUser && addSignOutIcon}
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

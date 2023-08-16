@@ -1,0 +1,33 @@
+.NavBar {
+    background-color: #999999;
+    width: 80%;
+    position: fixed;
+    left: 10%;
+    bottom: 2%;
+    border-radius: 100px;
+    border-color: transparent;
+    height: 50px;
+}
+
+.logo {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.NavLink {
+    text-decoration: none;
+    padding-right: 20px;
+}
+
+i {
+    height: 5px;
+}
+
+.Active i {
+    color:#242424
+}
+
+.NavText {
+    vertical-align: middle;
+    font-size: 20px;
+}

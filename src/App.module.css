@@ -30,18 +30,18 @@
 * {
     box-sizing: border-box;
 }
-  
+
 a {
     color: #555555;
     transition: color ease-in-out 0.3s;
 }
-  
+
 a:hover {
     text-decoration: none;
     color: #242424;
     font-weight: 800;
 }
-  
+
 a:hover i {
     color: #242424;
     transition: color ease-in-out 0.3s;

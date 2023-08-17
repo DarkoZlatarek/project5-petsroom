@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Navbar, Container, Nav, Dropdown, NavDropdown} from "react-bootstrap";
+import { Navbar, Container, Nav, NavDropdown} from "react-bootstrap";
 import logo from "../assets/logo.png"
 import styles from "../styles/NavBar.module.css"
 import { NavLink } from "react-router-dom";
@@ -22,7 +22,7 @@ const NavBar = () => {
 
   const addSignOutIcon = (
     <NavLink
-      className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+      className={styles.NavLink}
       to="/"
       onClick={handleSignOut}
       aria-label="signout"
@@ -34,7 +34,7 @@ const NavBar = () => {
 
   const addProfileIcon = (
     <NavLink
-      className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+      className={styles.NavLink}
       to={`/profiles/${currentUser?.profile_id}`}
       aria-label="profile"
     >
@@ -127,7 +127,7 @@ const NavBar = () => {
       >
         <i className="fa-solid fa-users"></i>
       </NavLink>
-      
+
       <div className={styles.avatarDiv}>
         <NavDropdown
           className={styles.toggle}

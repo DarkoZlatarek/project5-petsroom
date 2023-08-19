@@ -1,5 +1,5 @@
 import React from "react"
-import { Navbar, Container, Nav, NavDropdown} from "react-bootstrap";
+import { Navbar, Container, Nav, NavDropdown, OverlayTrigger, Tooltip} from "react-bootstrap";
 import logo from "../assets/logo.png"
 import styles from "../styles/NavBar.module.css"
 import { NavLink } from "react-router-dom";
@@ -93,17 +93,21 @@ const NavBar = () => {
 
   const loggedInIcons = (
     <>
-      <NavLink
-        exact
-        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
-        activeClassName={styles.Active}
-        to="/"
+      {" "}
+      <OverlayTrigger
+        placement="bottom"
+        overlay={<Tooltip>home</Tooltip>}
       >
-        <i className="fa-solid fa-house"></i>
-      </NavLink>
-
+        <NavLink
+          exact
+          className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+          activeClassName={styles.Active}
+          to="/"
+        >
+          <i className="fa-solid fa-house"></i>
+        </NavLink>
+      </OverlayTrigger>
       {currentUser && addDropDownIcons}
-
       <NavLink
         className={`${styles.NavLink} ${styles.NavLinkPosition}`}
         activeClassName={styles.Active}
@@ -111,7 +115,6 @@ const NavBar = () => {
       >
         <i className="fa-regular fa-calendar-days"></i>
       </NavLink>
-
       <NavLink
         className={`${styles.NavLink} ${styles.NavLinkPosition}`}
         activeClassName={styles.Active}
@@ -119,7 +122,6 @@ const NavBar = () => {
       >
         <i className="fa-solid fa-file-lines"></i>
       </NavLink>
-
       <NavLink
         className={`${styles.NavLink} ${styles.NavLinkPosition}`}
         activeClassName={styles.Active}
@@ -127,7 +129,6 @@ const NavBar = () => {
       >
         <i className="fa-solid fa-users"></i>
       </NavLink>
-
       <div className={styles.avatarDiv}>
         <NavDropdown
           className={styles.toggle}

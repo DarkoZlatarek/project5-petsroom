@@ -1,10 +1,6 @@
-import React, { useState } from "react";
+import React, {useRef, useState } from "react";
 
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
+import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
 
 import Upload from "../../assets/upload.PNG";
 
@@ -13,18 +9,37 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
 import { Image } from "react-bootstrap";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { axiosReq } from "../../api/axiosDefaults";
 
 function PostCreateForm() {
+  
   const [postData, setPostData] = useState({
     title: "",
     content: "",
     image: "",
-    dog_breed: "",
+    dog_breed: ""
   });
 
-  const { title, content, image, dog_breed } = postData;
+  const dogBreeds = [
+    { label: "terrier", value: "Terrier" },
+    { label: "poodle", value: "Poodle" },
+    { label: "chihuahua", value: "Chihuahua" }
+]
+
+  const [dogBreed, setDogBreed] = useState("Select a dog ");
+
+  let handleDogBreedChange = (e) => {
+    setDogBreed(e.target.value)
+  }
+
+  const { title, content, image } = postData;
 
   const [errors, setErrors] = useState({});
+
+  const imageInput = useRef(null)
+
+  const history = useHistory();
 
   const handleChangeImage = (event) => {
     if (event.target.files.length){
@@ -43,45 +58,81 @@ function PostCreateForm() {
     });
   }
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("image", imageInput.current.files[0]);
+    formData.append("dog_breed", dogBreed);
+
+    try {
+      const { data } = await axiosReq.post("/posts/", formData);
+      history.push(`/posts/${data.id}`);
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }
+  };
+
   const textFields = (
     <div className="text-center">
-      <Form>
-        <Form.Group controlId="title">
-          <Form.Label>Title</Form.Label>
-          <Form.Control
-            type="text"
-            name="title"
-            aria-label="post title"
-            value={title}
-            onChange={handleChange}
-          />
-        </Form.Group>
+      <Form.Group controlId="title">
+        <Form.Label>Title</Form.Label>
+        <Form.Control
+          type="text"
+          name="title"
+          aria-label="post title"
+          value={title}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.title?.map((message, idx) => (
+        <Alert className="text-center" variant="dark" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
-        <Form.Group controlId="content">
-          <Form.Label>Content</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={6}
-            name="content"
-            aria-label="Post description"
-            value={content}
-            onChange={handleChange}
-          />
-        </Form.Group>
+      <Form.Group controlId="content">
+        <Form.Label>Content</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={6}
+          name="content"
+          aria-label="Post description"
+          value={content}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.content?.map((message, idx) => (
+        <Alert className="text-center" variant="dark" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
-        <Form.Group controlId="dog_breed">
-          <Form.Label>Dog breed</Form.Label>
-          <Form.Control
-            as="select"
-            name="dog_breed"
-            aria-label="Dog breed"
-          />
-        </Form.Group>
-      </Form>
+      <div>
+        <select onChange={handleDogBreedChange}>
+          <option value="Select a dog">Select a dog</option>
+          {/* Mapping through each fruit object in our fruits array
+          and returning an option element with the appropriate attributes / values.
+         */}
+          {dogBreeds.map((dogBreed) => (
+            <option key={dogBreed.value} value={dogBreed.value}>{dogBreed.label}</option>
+          ))}
+        </select>
+      </div>
+
+      <Form.Group controlId="dog_breed">
+        <Form.Label>Dog breed</Form.Label>
+        <Form.Control as="select" name="dog_breed" aria-label="Dog breed" />
+      </Form.Group>
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => {}}
+        onClick={() => history.goBack()}
       >
         cancel
       </Button>
@@ -92,7 +143,7 @@ function PostCreateForm() {
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
@@ -125,8 +176,14 @@ function PostCreateForm() {
                 id="image-upload"
                 accept="image/*"
                 onChange={handleChangeImage}
+                ref={imageInput}
               />
             </Form.Group>
+            {errors?.image?.map((message, idx) => (
+              <Alert className="text-center" variant="dark" key={idx}>
+                {message}
+              </Alert>
+            ))}
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>

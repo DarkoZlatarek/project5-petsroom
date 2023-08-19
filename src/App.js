@@ -8,6 +8,9 @@ import SignInForm from "./pages/auth/SignInForm";
 import PostCreateForm from "./pages/posts/PostCreateForm";
 import EventCreateForm from "./pages/events/EventCreateForm";
 import ArticleCreateForm from "./pages/articles/ArticleCreateForm";
+import PostPage from "./pages/posts/PostPage";
+import EventPage from "./pages/events/EventPage";
+import ArticlePage from "./pages/articles/ArticlePage";
 
 function App() {
   return (
@@ -19,8 +22,11 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />
+          <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/events/create" render={() => <EventCreateForm />} />
+          <Route exact path="/events/:id" render={() => <EventPage />} />
           <Route exact path="/articles/create" render={() => <ArticleCreateForm />} />
+          <Route exact path="/articles/:id" render={() => <ArticlePage />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

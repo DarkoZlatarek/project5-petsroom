@@ -42,6 +42,16 @@ const NavBar = () => {
     </NavLink>
   );
 
+  const addLikedPostsIcon = (
+    <NavLink
+      className={styles.NavLink}
+      to="/liked"
+      aria-label="liked posts"
+    >
+    <span className={styles.NavText}>Liked posts</span>
+    </NavLink>
+  );
+
   const addPostIcon = (
     <NavLink
       className={styles.NavLink}
@@ -103,7 +113,20 @@ const NavBar = () => {
           <i className="fa-solid fa-house"></i>
         </OverlayTrigger>
       </NavLink>
+
+      <NavLink
+        exact
+        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+        activeClassName={styles.Active}
+        to="/feed"
+      >
+        <OverlayTrigger placement="bottom" overlay={<Tooltip>Feed</Tooltip>}>
+        <i className="fa-solid fa-hashtag"></i>
+        </OverlayTrigger>
+      </NavLink>
+
       {currentUser && addDropDownIcons}
+
       <NavLink
         className={`${styles.NavLink} ${styles.NavLinkPosition}`}
         activeClassName={styles.Active}
@@ -145,6 +168,7 @@ const NavBar = () => {
           id="basic-nav-dropdown"
         >
           <NavDropdown.Item>{addProfileIcon}</NavDropdown.Item>
+          <NavDropdown.Item>{addLikedPostsIcon}</NavDropdown.Item>
           <NavDropdown.Item>{addSignOutIcon}</NavDropdown.Item>
         </NavDropdown>
       </div>

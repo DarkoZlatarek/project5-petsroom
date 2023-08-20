@@ -11,21 +11,58 @@ import ArticleCreateForm from "./pages/articles/ArticleCreateForm";
 import PostPage from "./pages/posts/PostPage";
 import EventPage from "./pages/events/EventPage";
 import ArticlePage from "./pages/articles/ArticlePage";
+import PostsPage from "./pages/posts/PostsPage";
+import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
+
   return (
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.main}>
         <Switch>
-          <Route exact path="/" render={() => <h1>Home page</h1>} />
+          <Route
+            exact
+            path="/"
+            render={() => <PostsPage message="No results found." />}
+          />
+          <Route
+            exact
+            path="/feed"
+            render={() => (
+              <PostsPage
+                message="No results found. Follow someone to have their posts listed in feed"
+                filter={`owner__followed__owner__profile=${profile_id}&`}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/liked"
+            render={() => (
+              <PostsPage
+                message="No results found. Like someone's post to have that post listed in liked"
+                filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+              />
+            )}
+          />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
-          <Route exact path="/events/create" render={() => <EventCreateForm />} />
+          <Route
+            exact
+            path="/events/create"
+            render={() => <EventCreateForm />}
+          />
           <Route exact path="/events/:id" render={() => <EventPage />} />
-          <Route exact path="/articles/create" render={() => <ArticleCreateForm />} />
+          <Route
+            exact
+            path="/articles/create"
+            render={() => <ArticleCreateForm />}
+          />
           <Route exact path="/articles/:id" render={() => <ArticlePage />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>

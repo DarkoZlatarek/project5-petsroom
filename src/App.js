@@ -33,7 +33,7 @@ function App() {
             path="/feed"
             render={() => (
               <PostsPage
-                message="No results found. Follow someone to have their posts listed in feed"
+                message="No results found. Follow someone to have their posts listed in here"
                 filter={`owner__followed__owner__profile=${profile_id}&`}
               />
             )}
@@ -43,7 +43,7 @@ function App() {
             path="/liked"
             render={() => (
               <PostsPage
-                message="No results found. Like someone's post to have that post listed in liked"
+                message="No results found. Like someone's post to have that post listed in here"
                 filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
               />
             )}

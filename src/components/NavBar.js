@@ -93,41 +93,43 @@ const NavBar = () => {
 
   const loggedInIcons = (
     <>
-      {" "}
-      <OverlayTrigger
-        placement="bottom"
-        overlay={<Tooltip>home</Tooltip>}
+      <NavLink
+        exact
+        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+        activeClassName={styles.Active}
+        to="/"
       >
-        <NavLink
-          exact
-          className={`${styles.NavLink} ${styles.NavLinkPosition}`}
-          activeClassName={styles.Active}
-          to="/"
-        >
+        <OverlayTrigger placement="bottom" overlay={<Tooltip>Home</Tooltip>}>
           <i className="fa-solid fa-house"></i>
-        </NavLink>
-      </OverlayTrigger>
+        </OverlayTrigger>
+      </NavLink>
       {currentUser && addDropDownIcons}
       <NavLink
         className={`${styles.NavLink} ${styles.NavLinkPosition}`}
         activeClassName={styles.Active}
         to="/events"
       >
+        <OverlayTrigger placement="bottom" overlay={<Tooltip>Events</Tooltip>}>
         <i className="fa-regular fa-calendar-days"></i>
+        </OverlayTrigger>
       </NavLink>
       <NavLink
         className={`${styles.NavLink} ${styles.NavLinkPosition}`}
         activeClassName={styles.Active}
         to="/articles"
       >
+        <OverlayTrigger placement="bottom" overlay={<Tooltip>Articles</Tooltip>}>
         <i className="fa-solid fa-file-lines"></i>
+        </OverlayTrigger>
       </NavLink>
       <NavLink
         className={`${styles.NavLink} ${styles.NavLinkPosition}`}
         activeClassName={styles.Active}
         to="/followers"
       >
+        <OverlayTrigger placement="bottom" overlay={<Tooltip>Followers</Tooltip>}>
         <i className="fa-solid fa-users"></i>
+        </OverlayTrigger>
       </NavLink>
       <div className={styles.avatarDiv}>
         <NavDropdown

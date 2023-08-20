@@ -1,0 +1,16 @@
+.Event {
+    background-color: #f4efef;
+    border: 1px solid #242424;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .EventBorder {
+    border: solid 2px #242424;
+  }
+  
+  .Event figure,
+  h5 {
+    margin: 0 0;
+  }

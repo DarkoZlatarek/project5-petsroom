@@ -18,20 +18,7 @@ function PostCreateForm() {
     title: "",
     content: "",
     image: "",
-    dog_breed: ""
   });
-
-  const dogBreeds = [
-    { label: "terrier", value: "Terrier" },
-    { label: "poodle", value: "Poodle" },
-    { label: "chihuahua", value: "Chihuahua" }
-]
-
-  const [dogBreed, setDogBreed] = useState("Select a dog ");
-
-  let handleDogBreedChange = (e) => {
-    setDogBreed(e.target.value)
-  }
 
   const { title, content, image } = postData;
 
@@ -65,7 +52,6 @@ function PostCreateForm() {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
-    formData.append("dog_breed", dogBreed);
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
@@ -112,18 +98,6 @@ function PostCreateForm() {
           {message}
         </Alert>
       ))}
-
-      <div>
-        <select onChange={handleDogBreedChange}>
-          <option value="Select a dog">Select a dog</option>
-          {/* Mapping through each fruit object in our fruits array
-          and returning an option element with the appropriate attributes / values.
-         */}
-          {dogBreeds.map((dogBreed) => (
-            <option key={dogBreed.value} value={dogBreed.value}>{dogBreed.label}</option>
-          ))}
-        </select>
-      </div>
 
       <Form.Group controlId="dog_breed">
         <Form.Label>Dog breed</Form.Label>

@@ -2,8 +2,10 @@ import React from "react";
 import styles from "../../styles/Event.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media } from "react-bootstrap";
-import { Link } from "react-router-dom/cjs/react-router-dom";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 import Avatar from "../../components/Avatar";
+import { axiosRes } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Event = (props) => {
   const {
@@ -24,6 +26,21 @@ const Event = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/events/${id}/edit`)
+  }
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/events/${id}/`)
+      history.goBack()
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
   return (
     <Card className={styles.Event}>
       <Card.Body>
@@ -34,7 +51,12 @@ const Event = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{modified_on}</span>
-            {is_owner && eventPage && "..."}
+            {is_owner && eventPage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
           </div>
         </Media>
       </Card.Body>

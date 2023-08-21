@@ -13,6 +13,8 @@ import EventPage from "./pages/events/EventPage";
 import ArticlePage from "./pages/articles/ArticlePage";
 import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
+import EventsPage from "./pages/events/EventsPage";
+import ArticlesPage from "./pages/articles/ArticlesPage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -45,6 +47,24 @@ function App() {
               <PostsPage
                 message="No results found. Like someone's post to have that post listed in here"
                 filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/events"
+            render={() => (
+              <EventsPage
+                message="No events to display!"
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/articles"
+            render={() => (
+              <ArticlesPage
+                message="No articles to display!"
               />
             )}
           />

@@ -5,7 +5,7 @@ import Asset from "../../components/Asset"
 import { Form, Col, Row, Container } from "react-bootstrap";
 
 import appStyles from "../../App.module.css";
-import styles from "../../styles/PostsPage.module.css";
+import styles from "../../styles/PostsEventsArticlesPage.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 

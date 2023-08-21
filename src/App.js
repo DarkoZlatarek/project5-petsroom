@@ -15,6 +15,9 @@ import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import EventsPage from "./pages/events/EventsPage";
 import ArticlesPage from "./pages/articles/ArticlesPage";
+import EditPostForm from "./pages/posts/EditPostForm";
+import EditEventForm from "./pages/events/EditEventForm";
+import EditArticleForm from "./pages/articles/EditArticleForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -71,18 +74,21 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />
+          <Route exact path="/posts/:id/edit" render={() => <EditPostForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route
             exact
             path="/events/create"
             render={() => <EventCreateForm />}
           />
+          <Route exact path="/events/:id/edit" render={() => <EditEventForm />} />
           <Route exact path="/events/:id" render={() => <EventPage />} />
           <Route
             exact
             path="/articles/create"
             render={() => <ArticleCreateForm />}
           />
+          <Route exact path="/articles/:id/edit" render={() => <EditArticleForm />} />
           <Route exact path="/articles/:id" render={() => <ArticlePage />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>

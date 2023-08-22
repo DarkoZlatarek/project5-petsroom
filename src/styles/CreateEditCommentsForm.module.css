@@ -1,0 +1,20 @@
+.Form {
+    border: none;
+    border-bottom: 2px #999999 solid;
+  }
+  
+  .Button {
+    border: none;
+    background-color: #242424;
+    color: #f4efef;
+    border-radius: 100px;
+    padding: 4px 10px;
+    min-width: 75px;
+    margin: 5px;
+  }
+  
+  .Button:hover {
+    cursor: pointer;
+    background-color: #f4efef;
+    color: #242424;
+  }

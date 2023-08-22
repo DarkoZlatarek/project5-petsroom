@@ -20,7 +20,7 @@ function PostCreateForm() {
     image: "",
   });
 
-  const { title, content, image } = postData;
+  const { title, content, image} = postData;
 
   const [errors, setErrors] = useState({});
 

@@ -6,10 +6,16 @@ import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import {axiosReq} from "../../api/axiosDefaults"
 import Event from "./Event";
+import EventCommentCreateForm from "../comments/EventCommentCreateForm";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-function PostPage() {
+function EventPage() {
   const { id } = useParams();
-  const [event, setEvent] = useState({ results: [] });
+  const [eventpost, setEventpost] = useState({ results: [] });
+
+  const currentUser = useCurrentUser();
+  const profile_image = currentUser?.profile_image;
+  const [eventComments, setEventComments] = useState({ results: [] });
 
   useEffect(() => {
     const handleMount = async () => {
@@ -17,7 +23,7 @@ function PostPage() {
         const [{ data: event }] = await Promise.all([
           axiosReq.get(`/events/${id}`),
         ]);
-        setEvent({ results: [event] });
+        setEventpost({ results: [event] });
         console.log(event);
       } catch (err) {
         console.log(err);
@@ -30,8 +36,20 @@ function PostPage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles for mobile</p>
-        <Event {...event.results[0]} setEvents={setEvent} eventPage />
-        <Container className={appStyles.Content}>Comments</Container>
+        <Event {...eventpost.results[0]} setEvents={setEventpost} eventPage />
+        <Container className={appStyles.Content}>
+          {currentUser ? (
+            <EventCommentCreateForm
+              profile_id={currentUser.profile_id}
+              profileImage={profile_image}
+              eventpost={id}
+              setEventpost={setEventpost}
+              setEventComments={setEventComments}
+            />
+          ) : eventComments.results.length ? (
+            "Comments"
+          ) : null}
+        </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         Popular profiles for desktop
@@ -40,4 +58,4 @@ function PostPage() {
   );
 }
 
-export default PostPage;
+export default EventPage;

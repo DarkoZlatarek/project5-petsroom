@@ -20,7 +20,6 @@ const Post = (props) => {
     content,
     image,
     modified_on,
-    dog_breed,
     postPage,
     setPosts,
   } = props;

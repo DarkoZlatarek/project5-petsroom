@@ -26,7 +26,7 @@ export const MoreDropdown = ({handleEdit, handleDelete}) => {
             onClick={handleEdit}
             aria-label="edit"
           >
-            <i class="fa-solid fa-pen-to-square" />
+            <i className="fa-solid fa-pen-to-square" />
           </Dropdown.Item>
           <Dropdown.Item
             className={styles.DropdownItem}

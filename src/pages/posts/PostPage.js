@@ -7,9 +7,9 @@ import { useParams } from "react-router-dom/cjs/react-router-dom";
 import {axiosReq} from "../../api/axiosDefaults"
 import Post from "./Post";
 
-import CommentCreateForm from "../comments/CommentCreateForm";
+import PostCommentCreateForm from "../comments/PostCommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import EventPostComment from "../comments/EventPostComment";
+import PostComment from "../comments/PostComment";
 
 function PostPage() {
   const { id } = useParams();
@@ -42,7 +42,7 @@ function PostPage() {
         <Post {...post.results[0]} setPosts={setPost} postPage />
         <Container className={appStyles.Content}>
           {currentUser ? (
-            <CommentCreateForm
+            <PostCommentCreateForm
               profile_id={currentUser.profile_id}
               profileImage={profile_image}
               post={id}
@@ -50,18 +50,21 @@ function PostPage() {
               setComments={setComments}
             />
           ) : comments.results.length ? (
-            "Comments"
+            "Comments:"
           ) : null}
           {comments.results.length ? (
-            comments.results.map(comment => (
-              <EventPostComment key={comment.id} {...comment} />
+            comments.results.map((comment) => (
+              <PostComment
+                key={comment.id}
+                {...comment}
+                setPost={setPost}
+                setComments={setComments}
+              />
             ))
+          ) : currentUser ? (
+            <span>No comments yet, feel free to leave one!</span>
           ) : (
-            currentUser ? (
-              <span>No comments yet, be the first one to comment!</span>
-            ) : (
-              <span>No comments... yet</span>
-            )
+            <span>No comments... yet</span>
           )}
         </Container>
       </Col>

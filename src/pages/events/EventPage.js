@@ -8,7 +8,7 @@ import {axiosReq} from "../../api/axiosDefaults"
 import Event from "./Event";
 import EventCommentCreateForm from "../comments/EventCommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import EventPostComment from "../comments/EventPostComment";
+import EventComment from "../comments/EventComment";
 
 function EventPage() {
   const { id } = useParams();
@@ -52,8 +52,13 @@ function EventPage() {
             "Comments"
           ) : null}
           {eventComments.results.length ? (
-            eventComments.results.map(eventcomment => (
-              <EventPostComment key={eventcomment.id} {...eventcomment} />
+            eventComments.results.map((eventcomment) => (
+              <EventComment
+                key={eventcomment.id}
+                {...eventcomment}
+                setEventpost={setEventpost}
+                setEventComments={setEventComments}
+              />
             ))
           ) : currentUser ? (
             <span>No comments yet, be the first one to comment!</span>

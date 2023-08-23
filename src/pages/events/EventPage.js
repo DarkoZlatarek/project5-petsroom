@@ -9,6 +9,9 @@ import Event from "./Event";
 import EventCommentCreateForm from "../comments/EventCommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import EventComment from "../comments/EventComment";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
+import Asset from "../../components/Asset"
 
 function EventPage() {
   const { id } = useParams();
@@ -52,14 +55,20 @@ function EventPage() {
             "Comments"
           ) : null}
           {eventComments.results.length ? (
-            eventComments.results.map((eventcomment) => (
-              <EventComment
-                key={eventcomment.id}
-                {...eventcomment}
-                setEventpost={setEventpost}
-                setEventComments={setEventComments}
-              />
-            ))
+            <InfiniteScroll
+              children={eventComments.results.map((eventcomment) => (
+                <EventComment
+                  key={eventcomment.id}
+                  {...eventcomment}
+                  setEventpost={setEventpost}
+                  setEventComments={setEventComments}
+                />
+              ))}
+              dataLength={eventComments.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!eventComments.next}
+              next={() => fetchMoreData(eventComments, setEventComments)}
+            />
           ) : currentUser ? (
             <span>No comments yet, be the first one to comment!</span>
           ) : (

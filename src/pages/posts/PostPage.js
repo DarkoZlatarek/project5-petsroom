@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import { Container, Col, Row } from "react-bootstrap";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
+import Asset from "../../components/Asset"
 
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
@@ -53,14 +56,22 @@ function PostPage() {
             "Comments:"
           ) : null}
           {comments.results.length ? (
-            comments.results.map((comment) => (
+
+          <InfiniteScroll 
+          children={comments.results.map((comment) => (
               <PostComment
                 key={comment.id}
                 {...comment}
                 setPost={setPost}
                 setComments={setComments}
               />
-            ))
+            ))}
+            dataLength={comments.results.length}
+            loader={<Asset spinner />}
+            hasMore={!!comments.next}
+            next={() => fetchMoreData(comments, setComments)}
+          />
+            
           ) : currentUser ? (
             <span>No comments yet, feel free to leave one!</span>
           ) : (

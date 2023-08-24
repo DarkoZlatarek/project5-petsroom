@@ -46,16 +46,29 @@
     background-color: #f4efef;
     color: #242424;
 }
-  
+
+.Black,
+.BlackOutline {
+    font-size: 15px;
+    align-self: center;
+    border-radius: 50px;
+    border-color: transparent;
+    padding: 3px 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+    min-width: 75px;
+    letter-spacing: 0.05em;
+}
+
 .Black,
 .BlackOutline:hover {
-    background-color: #242a3d;
+    background-color: #555555;
     color: #f4efef;
 }
   
 .Black:hover,
 .BlackOutline {
-    background-color: a#f4efef;
+    background-color: #242424;
 }
   
 .Bright {

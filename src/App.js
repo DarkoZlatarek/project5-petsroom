@@ -18,6 +18,7 @@ import ArticlesPage from "./pages/articles/ArticlesPage";
 import EditPostForm from "./pages/posts/EditPostForm";
 import EditEventForm from "./pages/events/EditEventForm";
 import EditArticleForm from "./pages/articles/EditArticleForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -90,6 +91,7 @@ function App() {
           />
           <Route exact path="/articles/:id/edit" render={() => <EditArticleForm />} />
           <Route exact path="/articles/:id" render={() => <ArticlePage />} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

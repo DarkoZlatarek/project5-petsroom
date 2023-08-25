@@ -19,6 +19,9 @@ import EditPostForm from "./pages/posts/EditPostForm";
 import EditEventForm from "./pages/events/EditEventForm";
 import EditArticleForm from "./pages/articles/EditArticleForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -57,20 +60,12 @@ function App() {
           <Route
             exact
             path="/events"
-            render={() => (
-              <EventsPage
-                message="No events to display!"
-              />
-            )}
+            render={() => <EventsPage message="No events to display!" />}
           />
           <Route
             exact
             path="/articles"
-            render={() => (
-              <ArticlesPage
-                message="No articles to display!"
-              />
-            )}
+            render={() => <ArticlesPage message="No articles to display!" />}
           />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
@@ -82,16 +77,39 @@ function App() {
             path="/events/create"
             render={() => <EventCreateForm />}
           />
-          <Route exact path="/events/:id/edit" render={() => <EditEventForm />} />
+          <Route
+            exact
+            path="/events/:id/edit"
+            render={() => <EditEventForm />}
+          />
           <Route exact path="/events/:id" render={() => <EventPage />} />
           <Route
             exact
             path="/articles/create"
             render={() => <ArticleCreateForm />}
           />
-          <Route exact path="/articles/:id/edit" render={() => <EditArticleForm />} />
+          <Route
+            exact
+            path="/articles/:id/edit"
+            render={() => <EditArticleForm />}
+          />
           <Route exact path="/articles/:id" render={() => <ArticlePage />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route
+            exact
+            path="/profiles/:id/edit/username"
+            render={() => <UsernameForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/password"
+            render={() => <UserPasswordForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit"
+            render={() => <ProfileEditForm />}
+          />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

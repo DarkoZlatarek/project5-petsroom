@@ -3,16 +3,17 @@ import React, { useEffect, useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
-import Asset from "../../components/Asset"
+import Asset from "../../components/Asset";
 
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
-import {axiosReq} from "../../api/axiosDefaults"
+import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
 
 import PostCommentCreateForm from "../comments/PostCommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import PostComment from "../comments/PostComment";
+import PopularProfiles from "../profiles/PopularProfiles";
 
 function PostPage() {
   const { id } = useParams();
@@ -25,12 +26,12 @@ function PostPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: post }, {data: comments}] = await Promise.all([
+        const [{ data: post }, { data: comments }] = await Promise.all([
           axiosReq.get(`/posts/${id}`),
-          axiosReq.get(`/comments/?post=${id}`)
+          axiosReq.get(`/comments/?post=${id}`),
         ]);
         setPost({ results: [post] });
-        setComments(comments)
+        setComments(comments);
       } catch (err) {
         console.log(err);
       }
@@ -41,7 +42,7 @@ function PostPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular profiles for mobile</p>
+        <PopularProfiles mobile />
         <Post {...post.results[0]} setPosts={setPost} postPage />
         <Container className={appStyles.Content}>
           {currentUser ? (
@@ -56,22 +57,20 @@ function PostPage() {
             "Comments:"
           ) : null}
           {comments.results.length ? (
-
-          <InfiniteScroll 
-          children={comments.results.map((comment) => (
-              <PostComment
-                key={comment.id}
-                {...comment}
-                setPost={setPost}
-                setComments={setComments}
-              />
-            ))}
-            dataLength={comments.results.length}
-            loader={<Asset spinner />}
-            hasMore={!!comments.next}
-            next={() => fetchMoreData(comments, setComments)}
-          />
-            
+            <InfiniteScroll
+              children={comments.results.map((comment) => (
+                <PostComment
+                  key={comment.id}
+                  {...comment}
+                  setPost={setPost}
+                  setComments={setComments}
+                />
+              ))}
+              dataLength={comments.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!comments.next}
+              next={() => fetchMoreData(comments, setComments)}
+            />
           ) : currentUser ? (
             <span>No comments yet, feel free to leave one!</span>
           ) : (
@@ -80,7 +79,7 @@ function PostPage() {
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popular profiles for desktop
+        <PopularProfiles />
       </Col>
     </Row>
   );

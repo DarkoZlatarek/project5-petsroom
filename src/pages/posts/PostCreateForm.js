@@ -1,4 +1,4 @@
-import React, {useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
 
@@ -15,37 +15,37 @@ import { useRedirect } from "../../hooks/useRedirect";
 
 function PostCreateForm() {
   useRedirect("loggedOut");
-  
+
   const [postData, setPostData] = useState({
     title: "",
     content: "",
     image: "",
   });
 
-  const { title, content, image} = postData;
+  const { title, content, image } = postData;
 
   const [errors, setErrors] = useState({});
 
-  const imageInput = useRef(null)
+  const imageInput = useRef(null);
 
   const history = useHistory();
 
   const handleChangeImage = (event) => {
-    if (event.target.files.length){
+    if (event.target.files.length) {
       URL.revokeObjectURL(image);
       setPostData({
         ...postData,
-        image: URL.createObjectURL(event.target.files[0])
-      })
+        image: URL.createObjectURL(event.target.files[0]),
+      });
     }
-  }
+  };
 
   const handleChange = (event) => {
     setPostData({
       ...postData,
       [event.target.name]: event.target.value,
     });
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();

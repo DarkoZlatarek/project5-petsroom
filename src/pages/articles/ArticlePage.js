@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import { Container, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
-import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import {axiosReq} from "../../api/axiosDefaults"
 import Article from "./Article";

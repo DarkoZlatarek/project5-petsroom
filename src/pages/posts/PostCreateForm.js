@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
+import { Form, Button, Row, Col, Container, Image, Alert, Modal } from "react-bootstrap";
 
 import Upload from "../../assets/upload.PNG";
 
@@ -8,7 +8,6 @@ import styles from "../../styles/PostCreateForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
-import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
@@ -20,15 +19,20 @@ function PostCreateForm() {
     title: "",
     content: "",
     image: "",
+    pet: "",
   });
 
-  const { title, content, image } = postData;
+  const { title, content, image, pet } = postData;
 
   const [errors, setErrors] = useState({});
 
   const imageInput = useRef(null);
 
   const history = useHistory();
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
@@ -54,11 +58,14 @@ function PostCreateForm() {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
+    formData.append("pet", pet);
+      handleShow();
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
       history.push(`/posts/${data.id}`);
-    } catch (err) {
+    }
+    catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
@@ -101,9 +108,32 @@ function PostCreateForm() {
         </Alert>
       ))}
 
-      <Form.Group controlId="dog_breed">
+      <Form.Group controlId="pet">
         <Form.Label>Dog breed</Form.Label>
-        <Form.Control as="select" name="dog_breed" aria-label="Dog breed" />
+        <Form.Control
+          as="select"
+          name="pet"
+          aria-label="Pet"
+          onChange={handleChange}
+          defaultValue="Choose the breed"
+        >
+          <option value="dog">dog</option>
+          <option value="cat">cat</option>
+          <option value="rabbit">rabbit</option>
+          <option value="hamster">hamster</option>
+          <option value="bird">bird</option>
+          <option value="ferret">ferret</option>
+          <option value="reptile">reptile</option>
+          <option value="fish">fish</option>
+          <option value="horse">horse</option>
+          <option value="spider">spider</option>
+          <option value="frog">frog</option>
+          <option value="gerbil">gerbil</option>
+          <option value="chicken">chicken</option>
+          <option value="cow">cow</option>
+          <option value="pig">pig</option>
+          <option value="guinea_pig">guinea pig</option>
+        </Form.Control>
       </Form.Group>
 
       <Button
@@ -119,55 +149,60 @@ function PostCreateForm() {
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              {image ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  <Asset src={Upload} message="Click to upload an image" />
-                </Form.Label>
-              )}
-              <Form.File
-                id="image-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={imageInput}
-              />
-            </Form.Group>
-            {errors?.image?.map((message, idx) => (
-              <Alert className="text-center" variant="dark" key={idx}>
-                {message}
-              </Alert>
-            ))}
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
-    </Form>
+    <Container>
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+            <Container
+              className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+            >
+              <Form.Group className="text-center">
+                {image ? (
+                  <>
+                    <figure>
+                      <Image className={appStyles.Image} src={image} rounded />
+                    </figure>
+                    <div>
+                      <Form.Label
+                        className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                        htmlFor="image-upload"
+                      >
+                        Change image
+                      </Form.Label>
+                    </div>
+                  </>
+                ) : (
+                  <Form.Label
+                    className="d-flex justify-content-center"
+                    htmlFor="image-upload"
+                  >
+                    <Asset src={Upload} message="Click to upload an image" />
+                  </Form.Label>
+                )}
+                <Form.File
+                  id="image-upload"
+                  accept="image/*"
+                  onChange={handleChangeImage}
+                  ref={imageInput}
+                />
+              </Form.Group>
+              {errors?.image?.map((message, idx) => (
+                <Alert className="text-center" variant="dark" key={idx}>
+                  {message}
+                </Alert>
+              ))}
+              <div className="d-md-none">{textFields}</div>
+            </Container>
+          </Col>
+          <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+            <Container className={appStyles.Content}>{textFields}</Container>
+          </Col>
+        </Row>
+      </Form>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body variant="dark">Your post is successfully submitted!</Modal.Body>
+      </Modal>
+    </Container>
   );
 }
 

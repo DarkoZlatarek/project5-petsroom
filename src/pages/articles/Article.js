@@ -52,7 +52,7 @@ const Event = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`articles/${id}`}>
+      <Link to={`/articles/${id}`}>
         <div className={styles.ArticleBorder}>
           {title && <Card.Title className="text-center">{title}</Card.Title>}
           {content && <Card.Title className="text-center">{content}</Card.Title>}

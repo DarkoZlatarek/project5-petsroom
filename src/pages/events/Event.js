@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import linkStyles from "../../styles/DisableLink.module.css";
 
 const Event = (props) => {
   const {
@@ -60,7 +61,7 @@ const Event = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`events/${id}`}>
+      <Link to={`/events/${id}`}>
         <div className={styles.EventBorder}>
           {place && <Card.Title className="text-center">{place}</Card.Title>}
           {date && <Card.Title className="text-center">{date}</Card.Title>}

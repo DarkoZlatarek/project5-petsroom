@@ -81,8 +81,26 @@ figure {
     background: #555555;
 }
 
-@media only screen and (max-width: 801px) {
-    i {
-        font-size: 1rem;
+.LgNavbar {
+    display: block;
+}
+
+.SmNavbar {
+    display: none;
+}
+
+@media only screen and (max-width: 992px) {
+    .main {
+    padding-top: 0;
     }
-  }
+
+    .LgNavbar {
+    display: none;
+    }
+
+    .SmNavbar {
+        display: block;
+    }
+    
+
+  } 

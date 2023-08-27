@@ -1,12 +1,11 @@
-.NavBar {
-    background-color: #999999;
-    width: 80%;
+.navBarMiniPosition {
+    background-color: #242424;
     position: fixed;
-    left: 10%;
     bottom: 2%;
     border-radius: 100px;
     border-color: transparent;
     height: 50px;
+    z-index: 7;
 }
 
 .logo {
@@ -19,15 +18,73 @@
     padding-right: 20px;
 }
 
-i {
-    height: 5px;
+.DogPadding {
+    padding-left: 0px;
+    padding-top: 5px;
+}
+
+.avatarDiv {
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+.toggle {
+    border: none;
+    position: relative;
+    left: -7px;
+    color: #555555;
+}
+
+.toggle i:hover {
+    color: #999999;
 }
 
 .Active i {
-    color:#242424
+    color:#555555
+}
+
+a:hover {
+    text-decoration: none;
+    color: #999999;
+    font-weight: 800;
+}
+
+a:hover i {
+    color: #999999;
+    transition: color ease-in-out 0.3s;
+}
+
+
+i {
+    color: #555555;
+    font-size: 1.6rem;
+    padding: 7px;
+    vertical-align: middle;
+}
+  
+i:hover {
+    cursor: pointer;
+}
+
+.Active i {
+    color:#999999
 }
 
 .NavText {
     vertical-align: middle;
     font-size: 20px;
 }
+
+@media only screen and (max-width: 390px) {
+    i {
+        font-size: 1.2rem;
+    }
+
+    .NavLink {
+        padding-right: 5px;
+    }
+
+    .toggle {
+        left: 0px;
+    }
+  } 

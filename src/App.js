@@ -22,6 +22,7 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import NavBarMini from "./components/NavBarMini";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -29,7 +30,13 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <NavBar />
+      <div className={styles.LgNavbar}>
+        <NavBar />
+      </div>
+      <div className={styles.SmNavbar}>
+        <NavBarMini />
+      </div>
+
       <Container className={styles.main}>
         <Switch>
           <Route

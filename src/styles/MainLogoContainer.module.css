@@ -1,0 +1,19 @@
+.NavBar {
+    background-color: #999999;
+    width: 100%;
+    margin: auto;
+}
+
+.logo {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.title {
+    font-weight: 800;
+    font-size: 35px;
+    letter-spacing: 0.05em;
+    color: #242424;
+    text-decoration: none;
+    vertical-align: middle;
+}

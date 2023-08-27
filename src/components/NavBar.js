@@ -1,11 +1,11 @@
 import React from "react"
 import { Navbar, Container, Nav, NavDropdown, OverlayTrigger, Tooltip} from "react-bootstrap";
-import logo from "../assets/logo.png"
 import styles from "../styles/NavBar.module.css"
 import { NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser, } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
+import MainLogoContainer from "./MainLogoContainer";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -145,15 +145,6 @@ const NavBar = () => {
         <i className="fa-solid fa-file-lines"></i>
         </OverlayTrigger>
       </NavLink>
-      <NavLink
-        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
-        activeClassName={styles.Active}
-        to="/followers"
-      >
-        <OverlayTrigger placement="bottom" overlay={<Tooltip>Followers</Tooltip>}>
-        <i className="fa-solid fa-users"></i>
-        </OverlayTrigger>
-      </NavLink>
       <div className={styles.avatarDiv}>
         <NavDropdown
           className={styles.toggle}
@@ -207,12 +198,9 @@ const NavBar = () => {
   return (
     <Navbar expand="md" fixed="top" className={styles.NavBar}>
       <Container>
-        <NavLink to="/">
-          <Navbar.Brand>
-            <img className={styles.logo} src={logo} alt="logo" height="50" />
-            <span className={styles.title}>PetsRoom</span>
-          </Navbar.Brand>
-        </NavLink>
+        <div className="justify-content-left">
+          <MainLogoContainer />
+        </div>
           <Nav className="ml-auto text-right">
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>

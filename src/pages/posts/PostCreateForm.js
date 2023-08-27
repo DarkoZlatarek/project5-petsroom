@@ -59,10 +59,13 @@ function PostCreateForm() {
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
     formData.append("pet", pet);
-      handleShow();
 
     try {
-      const { data } = await axiosReq.post("/posts/", formData);
+      const { data } = await axiosReq.post("/posts/", formData)
+      .then(function(response) {
+        if(response.status === 201) {
+          handleShow();
+      }});
       history.push(`/posts/${data.id}`);
     }
     catch (err) {

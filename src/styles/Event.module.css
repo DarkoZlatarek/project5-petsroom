@@ -6,11 +6,11 @@
     text-align: center;
   }
 
-  .EventBorder {
-    border: solid 2px #242424;
+.EventBorder {
+  border: solid 2px #242424;
   }
   
-  .Event figure,
-  h5 {
-    margin: 0 0;
+.Event figure,
+h5 {
+  margin: 0 0;
   }

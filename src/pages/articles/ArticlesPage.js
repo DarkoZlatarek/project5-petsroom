@@ -12,6 +12,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png"
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import PopularProfiles from "../profiles/PopularProfiles";
 
 function ArticlesPage({ message, filter = "" }) {
   const [articles, setArticles] = useState({ results: [] });
@@ -44,6 +45,7 @@ function ArticlesPage({ message, filter = "" }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
+      <PopularProfiles mobile />
         <i className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`}></i>
         <Form
           className={styles.SearchBar}
@@ -80,6 +82,9 @@ function ArticlesPage({ message, filter = "" }) {
             <Asset spinner />
           </Container>
         )}
+      </Col>
+      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+        <PopularProfiles />
       </Col>
     </Row>
   );

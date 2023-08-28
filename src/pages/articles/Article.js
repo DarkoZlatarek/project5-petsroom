@@ -48,17 +48,28 @@ const Event = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{modified_on}</span>
-            {is_owner && articlePage && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />}
+            {is_owner && articlePage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
           </div>
         </Media>
       </Card.Body>
-      <Link to={`/articles/${id}`}>
+      <Link className={styles.ArticleHover} to={`/articles/${id}`}>
         <div className={styles.ArticleBorder}>
-          {title && <Card.Title className="text-center">{title}</Card.Title>}
-          {content && <Card.Title className="text-center">{content}</Card.Title>}
-          {article_link && <Card.Title className="text-center">{article_link}</Card.Title>}
+          {title && <Card.Text className="text-center">{title}</Card.Text>}
+          {content && <Card.Text className="text-center">{content}</Card.Text>}
         </div>
       </Link>
+      {article_link && (
+        <Card.Text className={`${styles.ArticleHover} text-center`}>
+          <a rel="noreferrer" target="_blank" href={article_link}>
+            Check the full story!
+          </a>
+        </Card.Text>
+      )}
     </Card>
   );
 };

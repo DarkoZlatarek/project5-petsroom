@@ -4,13 +4,19 @@
     border-radius: 2px;
     margin-bottom: 16px;
     text-align: center;
-  }
-
-  .ArticleBorder {
-    border: solid 2px #242424;
+    font-size: 20px;
   }
   
-  .Article figure,
-  h5 {
-    margin: 0 0;
+.ArticleHover:hover {
+  color: #242424;
+  border: solid 1px #242424;
+  }
+
+.ArticleBorder {
+  border: solid 2px #242424;
+  }
+  
+.Article figure,
+h5 {
+  margin: 0 0;
   }

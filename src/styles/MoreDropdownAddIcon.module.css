@@ -1,0 +1,23 @@
+.DropdownItem {
+    display: inline-block;
+    max-width: 50%;
+    padding: 0px;
+  }
+
+  .DropdownMenu {
+    position: absolute;
+    top: -165px;
+    left: -85px
+  }
+  
+  .Absolute {
+    position: relative;
+    right: 0; 
+    z-index: 99;
+  }
+
+@media only screen and (max-width: 391px) {
+  .DropdownMenu {
+      top: -150px
+  }
+}

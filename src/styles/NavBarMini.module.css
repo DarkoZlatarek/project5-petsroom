@@ -9,10 +9,26 @@
     z-index: 7;
 }
 
-.NavLinkPosition {
+.DropdownAddStyle {
     position: relative;
-    top: 7px;
+    right: 5px;
 }
+
+.DropdownProfileStyle {
+    position: relative;
+    right: 5px;
+    bottom: 6px;
+}
+
+.AvatarPosition {
+    position: relative;
+    top: 10px;
+}
+
+.AvatarPosition:hover {
+    cursor: pointer;
+}
+
 
 .logo {
     border-radius: 50%;
@@ -83,6 +99,48 @@ i:hover {
     font-size: 20px;
 }
 
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdownContent {
+    display: none;
+    position: absolute;
+    bottom: 90px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdownContent a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdownContent a:hover {background-color: #f1f1f1;}
+  
+.dropdown:active .dropdownContent {
+    display: block;
+  }
+  
+  .dropdown:active .dropbtn {
+    background-color: #3e8e41;
+  }
+
 @media only screen and (max-width: 820px) {
     .navBarMiniPosition {
         width: 100%;
@@ -100,5 +158,9 @@ i:hover {
 
     .toggle {
         left: 0px;
+    }
+
+    .AvatarPosition {
+        top: 7px;
     }
   } 

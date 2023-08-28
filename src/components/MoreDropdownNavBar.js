@@ -8,6 +8,7 @@ import {
 } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
+import { removeTokenTimestamp } from "../utils/utils";
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
@@ -48,6 +49,7 @@ export function MoreDropdownNavBar({ id }) {
             try {
               await axios.post("dj-rest-auth/logout/");
               setCurrentUser(null);
+              removeTokenTimestamp();
               history.push("/");
             } catch (err) {
               // console.log(err);

@@ -1,5 +1,4 @@
 import styles from "./App.module.css";
-import NavBar from "./components/NavBar";
 import { Container } from "react-bootstrap";
 import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
@@ -30,9 +29,6 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <div className={styles.LgNavbar}>
-        <NavBar />
-      </div>
       <div className={styles.SmNavbar}>
         <NavBarMini />
       </div>

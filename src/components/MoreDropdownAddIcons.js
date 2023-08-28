@@ -6,28 +6,31 @@ import { useHistory } from "react-router";
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
 
-
 export function MoreDropdownAddIcons() {
-  
   const history = useHistory();
-const ThreeDots = React.forwardRef(({ onClick }, ref) => (
-  <div className={styles.DogPadding} ref={ref}
-  onClick={(e) => {
-    e.preventDefault();
-    onClick(e);
-  }}>
-    <i className="fa-solid fa-dog"></i>
-  </div>
-));
+  const LittleDog = React.forwardRef(({ onClick }, ref) => (
+    <div
+      className={styles.DogPadding}
+      ref={ref}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(e);
+      }}
+    >
+      <i className="fa-solid fa-dog"></i>
+    </div>
+  ));
   return (
-    <Dropdown className={`ml-auto px-3 ${styles.Absolute} ${styles.IconPadding}`}>
-      <Dropdown.Toggle as={ThreeDots} />
-      <Dropdown.Menu className={styles.DropdownMenu} >
+    <Dropdown
+      className={`ml-auto px-3 ${styles.Absolute} ${styles.IconPadding}`}
+    >
+      <Dropdown.Toggle as={LittleDog} />
+      <Dropdown.Menu className={styles.DropdownMenu}>
         <Dropdown.Item
           onClick={() => history.push("/posts/create")}
           aria-label="Add post"
         >
-           <i className="fa-solid fa-circle-plus"></i>Profile
+          <i className="fa-solid fa-circle-plus"></i>Add post
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => history.push("/events/create")}

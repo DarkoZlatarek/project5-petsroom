@@ -1,3 +1,11 @@
 .Container {
     min-height: 343px;
 }
+
+.AssetCursor:hover {
+    cursor: pointer;
+}
+
+.modal {
+    background-color: rgba(36, 36, 36, 0.879);
+}

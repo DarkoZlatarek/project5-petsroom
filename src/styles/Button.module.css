@@ -64,11 +64,23 @@
 .BlackOutline:hover {
     background-color: #555555;
     color: #f4efef;
+    border: solid 1px #555555;
 }
   
 .Black:hover,
 .BlackOutline {
+    border: solid 1px #242424;
     background-color: #242424;
+}
+  
+.Black:focus {
+    outline: none;
+    background-color: #555555 !important;
+}
+
+.BlackOutline:focus {
+    outline: none;
+    background-color: #242424 !important;
 }
   
 .Bright {

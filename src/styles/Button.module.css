@@ -34,15 +34,15 @@
     width: 100%;
 }
   
-.BlueCancelCreate,
-.BlueCancelCreateOutline:hover,
+.BlackCancelCreate,
+.BlackCancelCreateOutline:hover,
 .Bright:hover {
     background-color: #242424;
     color: #f4efef;
 }
   
-.BlueCancelCreateOutline,
-.BlueCancelCreate:hover {
+.BlackCancelCreateOutline,
+.BlackCancelCreate:hover {
     background-color: #f4efef;
     color: #242424;
 }

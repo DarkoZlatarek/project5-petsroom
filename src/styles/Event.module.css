@@ -4,10 +4,16 @@
     border-radius: 2px;
     margin-bottom: 16px;
     text-align: center;
+    font-size: 20px;
   }
 
+.EventHover:hover {
+  color: #242424;
+  border: solid 1px #242424;
+}
+
 .EventBorder {
-  border: solid 2px #242424;
+  width: 100%;
   }
   
 .Event figure,

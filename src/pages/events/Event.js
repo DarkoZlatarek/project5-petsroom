@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import { Container, Row, Col } from "react-bootstrap";
 
 const Event = (props) => {
   const {
@@ -42,42 +43,51 @@ const Event = (props) => {
   }
 
   return (
-    <Card className={styles.Event}>
-      <Card.Body>
-        <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} height={55} />
-            {owner}
-          </Link>
-          <div className="d-flex align-items-center">
-            <span>{modified_on}</span>
-            {is_owner && eventPage && (
-              <MoreDropdown
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
-            )}
+    <Container>
+      <Card className={styles.Event}>
+        <Card.Body>
+          <Media className="align-items-center justify-content-between">
+            <Link to={`/profiles/${profile_id}`}>
+              <Avatar src={profile_image} height={55} />
+              {owner}
+            </Link>
+            <div className="d-flex align-items-center">
+              <span>{modified_on}</span>
+              {is_owner && eventPage && (
+                <MoreDropdown
+                  handleEdit={handleEdit}
+                  handleDelete={handleDelete}
+                />
+              )}
+            </div>
+          </Media>
+        </Card.Body>
+        <Link className={styles.EventHover} to={`/events/${id}`}>
+          {place && (
+                <Card.Text className="text-center">Place: {place}</Card.Text>
+              )}
+          <Row className={styles.EventBorder}>
+            
+            <Col>
+              {date && <Card.Text className="text-center">Date: {date}</Card.Text>}
+            </Col>
+            <Col>
+              {time && <Card.Text className="text-center">Time: {time}</Card.Text>}
+            </Col>
+          </Row>
+          {title && <Card.Text className="text-center"><div>Title:</div>{title}</Card.Text>}
+          {content && <Card.Text className="text-center"><div>Description:</div>{content}</Card.Text>}
+        </Link>
+        <Card.Body>
+          <div className={styles.PostBar}>
+            <Link to={`/events/${id}`}>
+              <i className="far fa-comments" />
+            </Link>
+            {eventcomments_count}
           </div>
-        </Media>
-      </Card.Body>
-      <Link to={`/events/${id}`}>
-        <div className={styles.EventBorder}>
-          {place && <Card.Title className="text-center">{place}</Card.Title>}
-          {date && <Card.Title className="text-center">{date}</Card.Title>}
-          {time && <Card.Title className="text-center">{time}</Card.Title>}
-        </div>
-      </Link>
-      <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text className="text-center">{content}</Card.Text>}
-        <div className={styles.PostBar}>
-          <Link to={`/events/${id}`}>
-            <i className="far fa-comments" />
-          </Link>
-          {eventcomments_count}
-        </div>
-      </Card.Body>
-    </Card>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 };
 

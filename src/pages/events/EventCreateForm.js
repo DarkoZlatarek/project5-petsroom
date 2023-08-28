@@ -146,12 +146,12 @@ function EventCreateForm() {
       ))}
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`}
         onClick={() => history.goBack()}
       >
         Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`} type="submit">
         Create event
       </Button>
     </div>
@@ -159,7 +159,7 @@ function EventCreateForm() {
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
+      <Form className={styles.BottomPaddingEvent} onSubmit={handleSubmit}>
         <Row className={`${styles.Row} justify-content-md-center`}>
           <Col md={7} lg={8}>
             <Container className={`${appStyles.Content} ${styles.Container}`}>

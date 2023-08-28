@@ -139,13 +139,13 @@ function PostCreateForm() {
       <div className={styles.ButtonsBgScreen}>
         <div>
           <Button
-            className={`${btnStyles.Button} ${btnStyles.BlueCancelCreate}`}
+            className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`}
             onClick={() => history.goBack()}
           >
             cancel
           </Button>
           <Button
-            className={`${btnStyles.Button} ${btnStyles.BlueCancelCreate}`}
+            className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`}
             type="submit"
           >
             create
@@ -168,13 +168,13 @@ function PostCreateForm() {
                   className="d-flex flex-row justify-content-center"
                 >
                   <Button
-                    className={`${btnStyles.Button} ${btnStyles.BlueCancelCreate}`}
+                    className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`}
                     onClick={() => history.goBack()}
                   >
                     cancel
                   </Button>
                   <Button
-                    className={`${btnStyles.Button} ${btnStyles.BlueCancelCreate}`}
+                    className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`}
                     type="submit"
                   >
                     create
@@ -190,7 +190,7 @@ function PostCreateForm() {
                     </figure>
                     <div>
                       <Form.Label
-                        className={`${btnStyles.Button} ${btnStyles.BlueCancelCreate} btn`}
+                        className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate} btn`}
                         htmlFor="image-upload"
                       >
                         Change image

@@ -6,6 +6,7 @@ import { Form, Col, Row, Container } from "react-bootstrap";
 
 import appStyles from "../../App.module.css";
 import styles from "../../styles/PostsEventsArticlesPage.module.css";
+import paddingStyles from "../../styles/PostCreateForm.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -43,50 +44,54 @@ function EventsPage({ message, filter = "" }) {
   }, [filter, query, pathname]);
 
   return (
-    <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <PopularProfiles mobile />
-        <i className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`}></i>
-        <Form
-          className={styles.SearchBar}
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            className="mr-sm-2"
-            placeholder="Search events"
-          />
-        </Form>
-        {hasLoaded ? (
-          <>
-            {events.results.length ? (
-              <InfiniteScroll
-                children={events.results.map((event) => (
-                  <Event key={event.id} {...event} setEvents={setEvents} />
-                ))}
-                dataLength={events.results.length}
-                loader={<Asset spinner />}
-                hasMore={!!events.next}
-                next={() => fetchMoreData(events, setEvents)}
-              />
-            ) : (
-              <Container className={appStyles.Content}>
-                <Asset src={NoResults} message={message} />
-              </Container>
-            )}
-          </>
-        ) : (
-          <Container className={appStyles.Content}>
-            <Asset spinner />
-          </Container>
-        )}
-      </Col>
-      <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        <PopularProfiles />
-      </Col>
-    </Row>
+    <div className={paddingStyles.BottomPadding}>
+      <Row className="h-100">
+        <Col className="py-2 p-0 p-lg-2" lg={8}>
+          <PopularProfiles mobile />
+          <i
+            className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`}
+          ></i>
+          <Form
+            className={styles.SearchBar}
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <Form.Control
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              type="text"
+              className="mr-sm-2"
+              placeholder="Search events"
+            />
+          </Form>
+          {hasLoaded ? (
+            <>
+              {events.results.length ? (
+                <InfiniteScroll
+                  children={events.results.map((event) => (
+                    <Event key={event.id} {...event} setEvents={setEvents} />
+                  ))}
+                  dataLength={events.results.length}
+                  loader={<Asset spinner />}
+                  hasMore={!!events.next}
+                  next={() => fetchMoreData(events, setEvents)}
+                />
+              ) : (
+                <Container className={appStyles.Content}>
+                  <Asset src={NoResults} message={message} />
+                </Container>
+              )}
+            </>
+          ) : (
+            <Container className={appStyles.Content}>
+              <Asset spinner />
+            </Container>
+          )}
+        </Col>
+        <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+          <PopularProfiles />
+        </Col>
+      </Row>
+    </div>
   );
 }
 

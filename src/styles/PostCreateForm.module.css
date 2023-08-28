@@ -18,25 +18,7 @@
     padding-bottom: 67px;
 }
 
-.ButtonsSmScreen {
-    display: none;
-}
-
-.ButtonsBgScreen {
-    display: block;
-}
-
 hr {
     width: 100%;
     border: solid 2px #f4efef;
-}
-
-@media only screen and (max-width: 768px) {
-    .ButtonsSmScreen {
-        display: block;
-    }
-    
-    .ButtonsBgScreen {
-        display: none;
-    }
 }

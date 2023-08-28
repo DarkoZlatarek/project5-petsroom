@@ -155,19 +155,19 @@ function EditEventForm() {
       ))}
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`}
         onClick={() => history.goBack()}
       >
         Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`} type="submit">
         Save event
       </Button>
     </div>
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className={styles.BottomPaddingEventArticle} onSubmit={handleSubmit}>
       <Row className={`${styles.Row} justify-content-md-center`}>
         <Col md={7} lg={8}>
           <Container

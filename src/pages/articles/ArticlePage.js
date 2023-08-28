@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom";
 import {axiosReq} from "../../api/axiosDefaults"
 import Article from "./Article";
 import PopularProfiles from "../profiles/PopularProfiles";
+import paddingStyles from "../../styles/PostCreateForm.module.css";
 
 function PostPage() {
   const { id } = useParams();
@@ -27,15 +28,21 @@ function PostPage() {
   }, [id]);
 
   return (
-    <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-      <PopularProfiles mobile />
-        <Article {...article.results[0]} setArticles={setArticle} articlePage />
-      </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <PopularProfiles />
-      </Col>
-    </Row>
+    <div className={paddingStyles.BottomPadding}>
+      <Row className="h-100">
+        <Col className="py-2 p-0 p-lg-2" lg={8}>
+          <PopularProfiles mobile />
+          <Article
+            {...article.results[0]}
+            setArticles={setArticle}
+            articlePage
+          />
+        </Col>
+        <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+          <PopularProfiles />
+        </Col>
+      </Row>
+    </div>
   );
 }
 

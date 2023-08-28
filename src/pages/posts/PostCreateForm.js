@@ -136,7 +136,7 @@ function PostCreateForm() {
           <option value="guinea_pig">guinea pig</option>
         </Form.Control>
       </Form.Group>
-      <div className={styles.ButtonsBgScreen}>
+      <div>
         <div>
           <Button
             className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`}
@@ -163,25 +163,6 @@ function PostCreateForm() {
             <Container
               className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
             >
-              <div className={styles.ButtonsSmScreen}>
-                <div
-                  className="d-flex flex-row justify-content-center"
-                >
-                  <Button
-                    className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`}
-                    onClick={() => history.goBack()}
-                  >
-                    cancel
-                  </Button>
-                  <Button
-                    className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`}
-                    type="submit"
-                  >
-                    create
-                  </Button>
-                </div>
-                <hr />
-              </div>
               <Form.Group className="text-center">
                 {image ? (
                   <>

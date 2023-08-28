@@ -9,6 +9,7 @@ import NoResults from "../../assets/no-results.png";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import paddingStyles from "../../styles/PostCreateForm.module.css";
 
 import PopularProfiles from "./PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -135,7 +136,7 @@ function ProfilePage() {
   );
 
   return (
-    <Row>
+    <Row className={paddingStyles.BottomPadding}>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
         <Container className={appStyles.Content}>

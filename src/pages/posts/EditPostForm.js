@@ -123,19 +123,19 @@ function EditPostForm() {
       </Form.Group>
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`}
         onClick={() => history.goBack()}
       >
         Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`} type="submit">
         Save
       </Button>
     </div>
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className={styles.BottomPadding} onSubmit={handleSubmit}>
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
@@ -147,7 +147,7 @@ function EditPostForm() {
               </figure>
               <div>
                 <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate} btn`}
                   htmlFor="image-upload"
                 >
                   Change image

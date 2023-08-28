@@ -31,7 +31,7 @@ function PostCreateForm() {
   const history = useHistory();
 
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {setShow(false); history.push("/");};
   const handleShow = () => setShow(true);
 
   const handleChangeImage = (event) => {
@@ -61,12 +61,11 @@ function PostCreateForm() {
     formData.append("pet", pet);
 
     try {
-      const { data } = await axiosReq.post("/posts/", formData)
+      await axiosReq.post("/posts/", formData)
       .then(function(response) {
         if(response.status === 201) {
           handleShow();
       }});
-      history.push(`/posts/${data.id}`);
     }
     catch (err) {
       console.log(err);
@@ -112,7 +111,7 @@ function PostCreateForm() {
       ))}
 
       <Form.Group controlId="pet">
-        <Form.Label>Dog breed</Form.Label>
+        <Form.Label>Pet type:</Form.Label>
         <Form.Control
           as="select"
           name="pet"
@@ -179,7 +178,10 @@ function PostCreateForm() {
                     className="d-flex justify-content-center"
                     htmlFor="image-upload"
                   >
-                    <Asset src={Upload} message="Click to upload an image" />
+                    <div className={styles.AssetCursor}>
+                      <Asset src={Upload} message="Click to upload an image" />
+                    </div>
+                    
                   </Form.Label>
                 )}
                 <Form.File
@@ -202,7 +204,7 @@ function PostCreateForm() {
           </Col>
         </Row>
       </Form>
-      <Modal show={show} onHide={handleClose}>
+      <Modal className={styles.modal} show={show} onHide={handleClose}>
         <Modal.Body variant="dark">Your post is successfully submitted!</Modal.Body>
       </Modal>
     </Container>

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -15,7 +15,6 @@ import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function EditPostForm() {
-  
   const [postData, setPostData] = useState({
     title: "",
     content: "",
@@ -26,44 +25,42 @@ function EditPostForm() {
 
   const [errors, setErrors] = useState({});
 
-  const imageInput = useRef(null)
+  const imageInput = useRef(null);
 
   const history = useHistory();
   const { id } = useParams();
 
   useEffect(() => {
     const handleMount = async () => {
-        try {
-            const { data } = await axiosReq.get(`/posts/${id}/`);
-            const {title, content, image, is_owner} = data;
+      try {
+        const { data } = await axiosReq.get(`/posts/${id}/`);
+        const { title, content, image, is_owner } = data;
 
-            is_owner
-              ? setPostData({ title, content, image })
-              : history.push("/");
-        } catch(err) {
-            console.log(err)
-        }
-    }
+        is_owner ? setPostData({ title, content, image }) : history.push("/");
+      } catch (err) {
+        // console.log(err);
+      }
+    };
 
     handleMount();
-  }, [history, id])
+  }, [history, id]);
 
   const handleChangeImage = (event) => {
-    if (event.target.files.length){
+    if (event.target.files.length) {
       URL.revokeObjectURL(image);
       setPostData({
         ...postData,
-        image: URL.createObjectURL(event.target.files[0])
-      })
+        image: URL.createObjectURL(event.target.files[0]),
+      });
     }
-  }
+  };
 
   const handleChange = (event) => {
     setPostData({
       ...postData,
       [event.target.name]: event.target.value,
     });
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -80,7 +77,7 @@ function EditPostForm() {
       await axiosReq.put(`/posts/${id}/`, formData);
       history.push(`/posts/${id}/`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -133,7 +130,10 @@ function EditPostForm() {
       >
         Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`} type="submit">
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.BlackCancelCreate}`}
+        type="submit"
+      >
         Save
       </Button>
     </div>
@@ -182,4 +182,3 @@ function EditPostForm() {
 }
 
 export default EditPostForm;
-

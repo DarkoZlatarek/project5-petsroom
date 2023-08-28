@@ -38,7 +38,7 @@ function EditArticleForm() {
           ? setArticleData({ title, content, article_link })
           : history.push("/");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     }
 
@@ -65,7 +65,7 @@ function EditArticleForm() {
       await axiosReq.put(`/articles/${id}/`, formData);
       history.push(`/articles/${id}/`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

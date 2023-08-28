@@ -43,7 +43,7 @@ const Event = (props) => {
       await axiosRes.delete(`/events/${id}/`)
       history.goBack()
     } catch(err) {
-      console.log(err)
+      // console.log(err)
     }
   }
 

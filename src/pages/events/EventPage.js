@@ -35,7 +35,7 @@ function EventPage() {
         setEventpost({ results: [event] });
         setEventComments(eventcomments)
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     handleMount();

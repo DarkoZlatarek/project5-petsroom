@@ -20,9 +20,8 @@ function PostPage() {
           axiosReq.get(`/articles/${id}`),
         ]);
         setArticle({ results: [article] });
-        console.log(article);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     handleMount();

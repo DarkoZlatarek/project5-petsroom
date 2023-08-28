@@ -93,7 +93,7 @@ const NavBar = () => {
         title={<i className="fa-solid fa-dog"></i>}
         id="basic-nav-dropdown"
       >
-        <NavDropdown.Item>{addPostIcon}</NavDropdown.Item>
+        <NavDropdown.Item className={styles.hoverClass}>{addPostIcon}</NavDropdown.Item>
         <NavDropdown.Item>{addEventIcon}</NavDropdown.Item>
         <NavDropdown.Item>{addArticleIcon}</NavDropdown.Item>
       </NavDropdown>
@@ -105,7 +105,7 @@ const NavBar = () => {
     <>
       <NavLink
         exact
-        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+        className={`${styles.NavLink} ${styles.NavLinkPosition} ${styles.toggleIcon}`}
         activeClassName={styles.Active}
         to="/"
       >
@@ -116,7 +116,7 @@ const NavBar = () => {
 
       <NavLink
         exact
-        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+        className={`${styles.NavLink} ${styles.NavLinkPosition} ${styles.toggleIcon}`}
         activeClassName={styles.Active}
         to="/feed"
       >
@@ -128,7 +128,7 @@ const NavBar = () => {
       {currentUser && addDropDownIcons}
 
       <NavLink
-        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+        className={`${styles.NavLink} ${styles.NavLinkPosition} ${styles.toggleIcon}`}
         activeClassName={styles.Active}
         to="/events"
       >
@@ -137,7 +137,7 @@ const NavBar = () => {
         </OverlayTrigger>
       </NavLink>
       <NavLink
-        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+        className={`${styles.NavLink} ${styles.NavLinkPosition} ${styles.toggleIcon}`}
         activeClassName={styles.Active}
         to="/articles"
       >

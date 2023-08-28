@@ -11,8 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.dropdown-menu.show {
-  top: unset !important;
-  bottom: 120% !important
-}

@@ -1,111 +1,24 @@
 import React from "react"
-import { Navbar, Container, Nav, NavDropdown, OverlayTrigger, Tooltip} from "react-bootstrap";
+import { Navbar, Container, Nav, OverlayTrigger, Tooltip} from "react-bootstrap";
 import styles from "../styles/NavBarMini.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser, useSetCurrentUser, } from "../contexts/CurrentUserContext";
-import Avatar from "./Avatar";
-import axios from "axios";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 import MainLogoContainer from "./MainLogoContainer";
+import { MoreDropdownNavBar } from "./MoreDropdownNavBar";
+import { MoreDropdownAddIcons } from "./MoreDropdownAddIcons";
 
 const NavBarMini = () => {
   const currentUser = useCurrentUser();
-  const setCurrentUser = useSetCurrentUser();
-
-  const handleSignOut = async () => {
-    try {
-      await axios.post('dj-rest-auth/logout/');
-      setCurrentUser(null);
-    } catch (err) {
-      // console.log(err);
-    }
-  };
-
-  const addSignOutIcon = (
-    <NavLink
-      className={styles.NavLink}
-      to="/"
-      onClick={handleSignOut}
-      aria-label="signout"
-    >
-      
-      <span className={styles.NavText}>Sign out</span>
-    </NavLink>
-  );
-
-  const addProfileIcon = (
-    <NavLink
-      className={styles.NavLink}
-      to={`/profiles/${currentUser?.profile_id}`}
-      aria-label="profile"
-    >
-    <span className={styles.NavText}>Profile</span>
-    </NavLink>
-  );
-
-  const addLikedPostsIcon = (
-    <NavLink
-      className={styles.NavLink}
-      to="/liked"
-      aria-label="liked posts"
-    >
-    <span className={styles.NavText}>Liked posts</span>
-    </NavLink>
-  );
-
-  const addPostIcon = (
-    <NavLink
-      className={styles.NavLink}
-      activeClassName={styles.Active}
-      to="/posts/create"
-    >
-      <i className="fa-solid fa-circle-plus"></i>
-      <span className={styles.NavText}>Add post</span>
-    </NavLink>
-  );
-
-  const addEventIcon = (
-    <NavLink
-      className={styles.NavLink}
-      activeClassName={styles.Active}
-      to="/events/create"
-    >
-      <i className="fa-regular fa-calendar-plus"></i>
-      <span className={styles.NavText}>Add event</span>
-    </NavLink>
-  );
-
-  const addArticleIcon = (
-    <NavLink
-      className={styles.NavLink}
-      activeClassName={styles.Active}
-      to="/articles/create"
-    >
-      <i className="fa-solid fa-file-circle-plus"></i>
-      <span className={styles.NavText}>Add article</span>
-    </NavLink>
-  );
 
   const addDropDownIcons = (
-    <>
-      <NavDropdown
-        className={`${styles.toggle} ${styles.navbarNav}`}
-        activeClassName={styles.Active}
-        title={<i className={`${styles.DogPadding} fa-solid fa-dog`}></i>}
-        id="basic-nav-dropdown"
-      >
-        <NavDropdown.Item>{addPostIcon}</NavDropdown.Item>
-        <NavDropdown.Item>{addEventIcon}</NavDropdown.Item>
-        <NavDropdown.Item>{addArticleIcon}</NavDropdown.Item>
-      </NavDropdown>
-    </>
+    <MoreDropdownAddIcons />
   );
-
 
   const loggedInIcons = (
     <>
       <NavLink
         exact
-        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+        className={`${styles.NavLink}`}
         activeClassName={styles.Active}
         to="/"
       >
@@ -116,7 +29,7 @@ const NavBarMini = () => {
 
       <NavLink
         exact
-        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+        className={`${styles.NavLink}`}
         activeClassName={styles.Active}
         to="/feed"
       >
@@ -125,10 +38,10 @@ const NavBarMini = () => {
         </OverlayTrigger>
       </NavLink>
 
-      {currentUser && addDropDownIcons}
+      {currentUser && <div className={styles.DropdownAddStyle}>{addDropDownIcons}</div>}
 
       <NavLink
-        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+        className={`${styles.NavLink}`}
         activeClassName={styles.Active}
         to="/events"
       >
@@ -137,7 +50,7 @@ const NavBarMini = () => {
         </OverlayTrigger>
       </NavLink>
       <NavLink
-        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
+        className={`${styles.NavLink}`}
         activeClassName={styles.Active}
         to="/articles"
       >
@@ -145,9 +58,13 @@ const NavBarMini = () => {
         <i className="fa-solid fa-file-lines"></i>
         </OverlayTrigger>
       </NavLink>
-      <div className={styles.avatarDiv}>
-        <NavDropdown
-          className={styles.toggle}
+      <div className={`${styles.NavLink} ${styles.AvatarPosition}`}>
+        <div className={styles.DropdownProfileStyle}><MoreDropdownNavBar /></div>
+      </div>
+      
+      {/*<div className={styles.avatarDiv}>
+         <NavDropdown
+          className={`${styles.toggle} ${styles.dropdown}`}
           activeClassName={styles.Active}
           title={
             <Avatar
@@ -157,11 +74,13 @@ const NavBarMini = () => {
           }
           id="basic-nav-dropdown"
         >
+          <div className={styles.DropdownStyle}>
           <NavDropdown.Item>{addProfileIcon}</NavDropdown.Item>
           <NavDropdown.Item>{addLikedPostsIcon}</NavDropdown.Item>
           <NavDropdown.Item>{addSignOutIcon}</NavDropdown.Item>
+          </div>
         </NavDropdown>
-      </div>
+      </div> */}
     </>
   );
 

@@ -6,6 +6,7 @@ import { Form, Col, Row, Container } from "react-bootstrap";
 
 import appStyles from "../../App.module.css";
 import styles from "../../styles/PostsEventsArticlesPage.module.css";
+import stylesPage from "../../styles/PostCreateForm.module.css"
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -43,6 +44,7 @@ function ArticlesPage({ message, filter = "" }) {
   }, [filter, query, pathname]);
 
   return (
+    <Container className={stylesPage.BottomPadding}>
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
       <PopularProfiles mobile />
@@ -87,6 +89,7 @@ function ArticlesPage({ message, filter = "" }) {
         <PopularProfiles />
       </Col>
     </Row>
+    </Container>
   );
 }
 

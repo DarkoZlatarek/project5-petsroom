@@ -63,13 +63,15 @@ const Event = (props) => {
           {content && <Card.Text className="text-center">{content}</Card.Text>}
         </div>
       </Link>
+      <div>
+      <hr/>
       {article_link && (
         <Card.Text className={`${styles.ArticleHover} text-center`}>
           <a rel="noreferrer" target="_blank" href={article_link}>
             Check the full story!
           </a>
         </Card.Text>
-      )}
+      )}</div>
     </Card>
   );
 };

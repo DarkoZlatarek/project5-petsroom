@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
+import { Form, Button, Row, Col, Container, Alert, Modal } from "react-bootstrap";
 
 import styles from "../../styles/PostCreateForm.module.css";
 import appStyles from "../../App.module.css";
@@ -23,6 +23,10 @@ function ArticleCreateForm() {
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
+  
+  const [show, setShow] = useState(false);
+  const handleClose = () => {setShow(false); history.push("/articles/");};
+  const handleShow = () => setShow(true);
 
   const handleChange = (event) => {
     setArticleData({
@@ -40,8 +44,11 @@ function ArticleCreateForm() {
     formData.append("article_link", article_link);
 
     try {
-      const { data } = await axiosReq.post("/articles/", formData);
-      history.push(`/articles/${data.id}`);
+      await axiosReq.post("/articles/", formData)
+      .then(function(response) {
+        if(response.status === 201) {
+          handleShow();
+      }});
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -115,17 +122,25 @@ function ArticleCreateForm() {
   );
 
   return (
-    <Form className={styles.BottomPaddingEventArticle} onSubmit={handleSubmit}>
-      <Row className={`${styles.Row} justify-content-md-center`}>
-        <Col md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container}`}
-          >
-            <div>{textFields}</div>
-          </Container>
-        </Col>
-      </Row>
-    </Form>
+    <Container>
+      <Form
+        className={styles.BottomPaddingEventArticle}
+        onSubmit={handleSubmit}
+      >
+        <Row className={`${styles.Row} justify-content-md-center`}>
+          <Col md={7} lg={8}>
+            <Container className={`${appStyles.Content} ${styles.Container}`}>
+              <div>{textFields}</div>
+            </Container>
+          </Col>
+        </Row>
+      </Form>
+      <Modal className={styles.modal} show={show} onHide={handleClose}>
+        <Modal.Body variant="dark">
+          Your article is successfully submitted!
+        </Modal.Body>
+      </Modal>
+    </Container>
   );
 }
 

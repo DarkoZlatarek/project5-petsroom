@@ -20,7 +20,7 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   </div>
 ));
   return (
-    <Dropdown className={`ml-auto px-3 ${styles.Absolute}`}>
+    <Dropdown className={`ml-auto px-3 ${styles.Absolute} ${styles.IconPadding}`}>
       <Dropdown.Toggle as={ThreeDots} />
       <Dropdown.Menu className={styles.DropdownMenu} >
         <Dropdown.Item

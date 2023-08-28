@@ -61,26 +61,6 @@ const NavBarMini = () => {
       <div className={`${styles.NavLink} ${styles.AvatarPosition}`}>
         <div className={styles.DropdownProfileStyle}><MoreDropdownNavBar /></div>
       </div>
-      
-      {/*<div className={styles.avatarDiv}>
-         <NavDropdown
-          className={`${styles.toggle} ${styles.dropdown}`}
-          activeClassName={styles.Active}
-          title={
-            <Avatar
-              src={currentUser?.profile_image}
-              height={30}
-            />
-          }
-          id="basic-nav-dropdown"
-        >
-          <div className={styles.DropdownStyle}>
-          <NavDropdown.Item>{addProfileIcon}</NavDropdown.Item>
-          <NavDropdown.Item>{addLikedPostsIcon}</NavDropdown.Item>
-          <NavDropdown.Item>{addSignOutIcon}</NavDropdown.Item>
-          </div>
-        </NavDropdown>
-      </div> */}
     </>
   );
 

@@ -1,7 +1,6 @@
 import React from "react"
 import { Navbar, Container, Nav, NavDropdown, OverlayTrigger, Tooltip} from "react-bootstrap";
 import styles from "../styles/NavBarMini.module.css";
-import mainNavStyles from "../styles/NavBar.module.css"
 import { NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser, } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
@@ -106,7 +105,7 @@ const NavBarMini = () => {
     <>
       <NavLink
         exact
-        className={`${styles.NavLink} ${mainNavStyles.NavLinkPosition}`}
+        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
         activeClassName={styles.Active}
         to="/"
       >
@@ -117,7 +116,7 @@ const NavBarMini = () => {
 
       <NavLink
         exact
-        className={`${styles.NavLink} ${mainNavStyles.NavLinkPosition}`}
+        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
         activeClassName={styles.Active}
         to="/feed"
       >
@@ -129,7 +128,7 @@ const NavBarMini = () => {
       {currentUser && addDropDownIcons}
 
       <NavLink
-        className={`${styles.NavLink} ${mainNavStyles.NavLinkPosition}`}
+        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
         activeClassName={styles.Active}
         to="/events"
       >
@@ -138,7 +137,7 @@ const NavBarMini = () => {
         </OverlayTrigger>
       </NavLink>
       <NavLink
-        className={`${styles.NavLink} ${mainNavStyles.NavLinkPosition}`}
+        className={`${styles.NavLink} ${styles.NavLinkPosition}`}
         activeClassName={styles.Active}
         to="/articles"
       >

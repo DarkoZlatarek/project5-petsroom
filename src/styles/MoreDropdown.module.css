@@ -3,9 +3,15 @@
     max-width: 50%;
     padding: 0px;
   }
+
+  .DropdownMenu {
+    position: absolute;
+    top: -128px;
+    left: -90px
+  }
   
   .Absolute {
-    position: absolute;
-    right: 0;
+    position: relative;
+    right: 0; 
     z-index: 99;
   }

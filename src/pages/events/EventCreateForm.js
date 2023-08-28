@@ -159,7 +159,7 @@ function EventCreateForm() {
 
   return (
     <Container>
-      <Form className={styles.BottomPaddingEvent} onSubmit={handleSubmit}>
+      <Form className={styles.BottomPaddingEventArticle} onSubmit={handleSubmit}>
         <Row className={`${styles.Row} justify-content-md-center`}>
           <Col md={7} lg={8}>
             <Container className={`${appStyles.Content} ${styles.Container}`}>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
+import { Form, Button, Row, Col, Container, Alert, Modal } from "react-bootstrap";
 
 import styles from "../../styles/PostCreateForm.module.css";
 import appStyles from "../../App.module.css";
@@ -26,6 +26,10 @@ function EventCreateForm() {
 
   const history = useHistory();
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => {setShow(false); history.push("/events/");};
+  const handleShow = () => setShow(true);
+
   const handleChange = (event) => {
     setEventData({
       ...eventData,
@@ -44,8 +48,11 @@ function EventCreateForm() {
     formData.append("time", time);
 
     try {
-      const { data } = await axiosReq.post("/events/", formData);
-      history.push(`/events/${data.id}`);
+      await axiosReq.post("/events/", formData)
+      .then(function(response) {
+        if(response.status === 201) {
+          handleShow();
+      }});
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -151,17 +158,22 @@ function EventCreateForm() {
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row className={`${styles.Row} justify-content-md-center`}>
-        <Col md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container}`}
-          >
-            <div>{textFields}</div>
-          </Container>
-        </Col>
-      </Row>
-    </Form>
+    <Container>
+      <Form onSubmit={handleSubmit}>
+        <Row className={`${styles.Row} justify-content-md-center`}>
+          <Col md={7} lg={8}>
+            <Container className={`${appStyles.Content} ${styles.Container}`}>
+              <div>{textFields}</div>
+            </Container>
+          </Col>
+        </Row>
+      </Form>
+      <Modal className={styles.modal} show={show} onHide={handleClose}>
+        <Modal.Body variant="dark">
+          Your event is successfully submitted!
+        </Modal.Body>
+      </Modal>
+    </Container>
   );
 }
 

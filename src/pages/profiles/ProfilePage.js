@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-import { Col, Row, Container, Image, Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+
 
 import Asset from "../../components/Asset";
 import Post from "../posts/Post";

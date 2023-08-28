@@ -1,12 +1,17 @@
 import React from "react";
 import styles from "../../styles/Event.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media } from "react-bootstrap";
+
+import Card from "react-bootstrap/Card";
+import Media from "react-bootstrap/Media";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
-import { Container, Row, Col } from "react-bootstrap";
 
 const Event = (props) => {
   const {

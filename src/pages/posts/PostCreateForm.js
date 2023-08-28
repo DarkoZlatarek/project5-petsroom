@@ -1,6 +1,13 @@
 import React, { useRef, useState } from "react";
 
-import { Form, Button, Row, Col, Container, Image, Alert, Modal } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Image";
+import Image from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
+import Modal from "react-bootstrap/Modal";
 
 import Upload from "../../assets/upload.PNG";
 

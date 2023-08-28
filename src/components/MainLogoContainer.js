@@ -1,7 +1,8 @@
 import React from "react";
 import logo from "../assets/logo.png";
 import styles from "../styles/MainLogoContainer.module.css";
-import { Navbar, Container } from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
 import { NavLink } from "react-router-dom";
 
 const MainLogoContainer = () => {

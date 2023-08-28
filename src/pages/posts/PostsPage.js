@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import Post from "./Post"
 import Asset from "../../components/Asset"
 
-import { Form, Col, Row, Container } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
 import styles from "../../styles/PostsEventsArticlesPage.module.css";

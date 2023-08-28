@@ -78,7 +78,7 @@ function PostCreateForm() {
   const textFields = (
     <div className="text-center">
       <Form.Group controlId="title">
-        <Form.Label>Title</Form.Label>
+        <Form.Label>Title:</Form.Label>
         <Form.Control
           type="text"
           name="title"
@@ -94,10 +94,10 @@ function PostCreateForm() {
       ))}
 
       <Form.Group controlId="content">
-        <Form.Label>Content</Form.Label>
+        <Form.Label>Content:</Form.Label>
         <Form.Control
           as="textarea"
-          rows={6}
+          rows={4}
           name="content"
           aria-label="Post description"
           value={content}
@@ -117,7 +117,6 @@ function PostCreateForm() {
           name="pet"
           aria-label="Pet"
           onChange={handleChange}
-          defaultValue="Choose the breed"
         >
           <option value="dog">dog</option>
           <option value="cat">cat</option>
@@ -137,27 +136,52 @@ function PostCreateForm() {
           <option value="guinea_pig">guinea pig</option>
         </Form.Control>
       </Form.Group>
-
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => history.goBack()}
-      >
-        cancel
-      </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
-      </Button>
+      <div className={styles.ButtonsBgScreen}>
+        <div>
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.BlueCancelCreate}`}
+            onClick={() => history.goBack()}
+          >
+            cancel
+          </Button>
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.BlueCancelCreate}`}
+            type="submit"
+          >
+            create
+          </Button>
+        </div>
+      </div>
     </div>
   );
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
+      <Form className={styles.BottomPadding} onSubmit={handleSubmit}>
         <Row>
           <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
             <Container
               className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
             >
+              <div className={styles.ButtonsSmScreen}>
+                <div
+                  className="d-flex flex-row justify-content-center"
+                >
+                  <Button
+                    className={`${btnStyles.Button} ${btnStyles.BlueCancelCreate}`}
+                    onClick={() => history.goBack()}
+                  >
+                    cancel
+                  </Button>
+                  <Button
+                    className={`${btnStyles.Button} ${btnStyles.BlueCancelCreate}`}
+                    type="submit"
+                  >
+                    create
+                  </Button>
+                </div>
+                <hr />
+              </div>
               <Form.Group className="text-center">
                 {image ? (
                   <>
@@ -166,7 +190,7 @@ function PostCreateForm() {
                     </figure>
                     <div>
                       <Form.Label
-                        className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                        className={`${btnStyles.Button} ${btnStyles.BlueCancelCreate} btn`}
                         htmlFor="image-upload"
                       >
                         Change image
@@ -181,7 +205,6 @@ function PostCreateForm() {
                     <div className={styles.AssetCursor}>
                       <Asset src={Upload} message="Click to upload an image" />
                     </div>
-                    
                   </Form.Label>
                 )}
                 <Form.File
@@ -205,7 +228,9 @@ function PostCreateForm() {
         </Row>
       </Form>
       <Modal className={styles.modal} show={show} onHide={handleClose}>
-        <Modal.Body variant="dark">Your post is successfully submitted!</Modal.Body>
+        <Modal.Body variant="dark">
+          Your post is successfully submitted!
+        </Modal.Body>
       </Modal>
     </Container>
   );

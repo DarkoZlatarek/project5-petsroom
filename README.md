@@ -202,17 +202,17 @@ The font chosen for the page is from the Google Fonts:
 * SQL - Postgres
 
 ### Frameworks, Libraries & Programs Used
-* Google Fonts
-* Font Awesome
-* GitPod
-* GitHub
-* Am I Responsive?
-* Turbologo
-* Django
-* React-Bootstrap
-* DrawSQL
-* LucidChart
-* ReactJS
+* Google Fonts - For the site fonts.
+* Font Awesome - To add icons to the navigation sections.
+* GitPod - To build the project & create the JSX & CSS files before pushing the project to Github.
+* GitHub - To store my repository for submission.
+* Am I Responsive? - To ensure the project looked good across all devices.
+* Turbologo - To create a logo for the project.
+* Django - Used to build the backend database that serves as an API for the front-end project.
+* React-Bootstrap - The styling library that has aided to the layout of the site, and which was introduced to us during the course of the program.
+* DrawSQL - An interactive tool that allows for the creation of Database mock-ups so that we can visualise the relationships between models.
+* LucidChart - To create site navigation chart.
+* ReactJS - To build the components that would collectively form the front-end application.
 
 ## Components
 Several components have been implemented within this project that have been reused throughout the project:

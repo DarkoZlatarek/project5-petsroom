@@ -20,7 +20,6 @@ const Event = (props) => {
     modified_on,
     articlePage,
   } = props;
-
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 

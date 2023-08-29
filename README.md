@@ -130,96 +130,64 @@ The font chosen for the page is from the Google Fonts:
 
 #### Submission Form:
 
-![Submission Form](src/assets/images-readme/readme-forms.png)
+![Submission Form](src/assets/readme-images/create-form.png)
+
+#### Edit Form:
+
+![Edit Form](src/assets/readme-images/edit-form.png)
 
 #### 404 Page Not Found:
 
-![404 Page Not Found](src/assets/images-readme/readme-notfound.png)
+![404 Page Not Found](src/assets/readme-images/page-not-found.png)
 
 #### Popular Profiles:
 
-![Popular Profiles](src/assets/images-readme/readme-populareprofiles.png)
-
-#### Social Links:
-
-![Social Links](src/assets/images-readme/readme-sociallinks.png)
+![Popular Profiles](src/assets/readme-images/popular-profiles.PNG)
 
 #### Log in, Log out & Sign up:
 
 ##### Login:
 
-![Login](src/assets/images-readme/readme-login.png)
+![Login](src/assets/readme-images/sign-in.PNG)
 
 ##### Logout:
 
-![Logout](src/assets/images-readme/readme-logout.png)
+![Logout](src/assets/readme-images/sign-out.PNG)
 
 ##### Sign-up:
 
-![Sign-up](src/assets/images-readme/readme-signup.png)
+![Sign-up](src/assets/readme-images/sign-up.PNG)
 
 ### Features Left to Implement:
-- The ability to like articles & events.
-- The ability to leave comments on articles & events
-- Notifications when a user receives a new follower, comment, or like.
-- Email notification when a new Article has been published to the site.
-- Private messaging between users.
-- Group messaging between users.
-- Restrict profile & posts views to only an approved list of users, should a user wish.
-- A contact form so that users can provide feedback.
+* The ability to like articles & events.
+* The ability to leave comments on articles.
+* Easier access to own created events and articles.
+* Notifications when a user receives a new follower, comment, or like.
+* Private and group messaging between users.
 
 ## Testing
 
 ### Manual Testing:
-1. SignUpForm gives 400 error:
- - Resolved by changing `password` to `password1` in form fields & variable keys.
-2. 500 server error:
- - Resolved with the aid of tutor support. All database migrations for both the Django project & apps needed to be cleared & remigrated. The precise steps for this have been documented in the README for the deployed backend API.
-3. CRUD functionality has been tested for each of the following: Posts | Articles | Events | Comments | Likes | Follow | Profile
+1. The sign up form works without an error when creating a new profile.
+2. The sign in form works without an error when signing in to your own account.
+3. CRUD functionality has been tested for each of the following: Posts | Articles | Events | Comments | Event comments | Likes | Follow | Profile
  - Likes & Follow may only be created & deleted
  - Profile may only be updated
 4. All nav links open to the correct page.
-5. All external links open to a new browser window.
+5. Links from article page opens to a new tab.
 6. Pages intended for logged-in users only will redirect logged-out users back to the home page.
 7. Users attempting to edit content that they did not publish are redirected back to the home page.
-8. Users are able to create a new account.
-9. Users with an existing account are able to log in.
 10. Each user has the ability to log out.
 
 ### Validator Testing
 1. CSS files pass through the [Jigsaw validator](https://jigsaw.w3.org/css-validator/) with no issues found.
+![Css Validator](src/assets/readme-images/css-validator.PNG)
 
-![Jigsaw validator message](src/assets/images-readme/readme-w3c.png)
+2. All JavaScript files were chacked for Problems inside the gitpod workspace. All came to have no problems apart from App.test.js file. This file contains three warnings that were left by following the moments walkthrough. As this warnings do not affect the overal functionality of the web page, they were ignored. 
 
-2. a. Javascript files pass through [ESLint](https://eslint.org/). The following issues were raised, and have been intentionally ignored as they are in relation to code that was provided in the Moments Walkthrough project:
- - Props spreading is forbidden
- - Do not pass children as props. 
- - Do not use Array index in keys
- - 'a_name' is already declared in the upper scope
- - Expected an assignment or function call and instead saw an expression
- - Do not nest ternary expressions
- - Fragments should contain more than one child
-2. b. Additionally, this error has also been ignored:
- - Identifier 'field_name' is not in camel case 
- - - relates to a database field in the API, case cannot be changed for this reason.
-2. c. All instances of errors where a newline has been asked for within an opening & closing set of tags, eg:
- - `<p>{owner} doesn't like the {drink}</p>` should be written as:
-```
-<p>
-  {owner}
-  {' '}
-  doesn't like this
-  {' '}
-  {drink}
-</p>
-```
- - This particular rule does not lend to the readability of the code, & instead hinders it (in my opinion).
-2. d. All `console.log(err);` have been left in place & commented out, as it was suggested that this is also done in real-world scenarios.
-2. e. Added all files affected by the above, unresolved warnings to `.eslintignore`, as well as added the following line to the top of each individual file, `/* eslint-disable */` to allow for a successful deployment on Heroku.
+3. The page has an excellent Accessibility rating in Lighthouse, but not the performance. According to the Lighthouse this is mainly because of the size of images that are uploaded.
 
-3. The page has an excellent Accessibility rating in Lighthouse:
-
-![Accessibility score](src/assets/images-readme/readme-lighthouse.png)
+![Accessibility score](src/assets/readme-images/lighthouse.PNG)
 
 4. Tested the site opens in Brave, Chrome, Safari & on a mobile device without issues.
 

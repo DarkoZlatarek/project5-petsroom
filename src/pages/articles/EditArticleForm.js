@@ -143,6 +143,7 @@ function EditArticleForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container}`}
           >
+          <div className={styles.AddTitle}>Edit article!</div>
             <div>{textFields}</div>
           </Container>
         </Col>

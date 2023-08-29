@@ -178,6 +178,7 @@ function EditEventForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container}`}
           >
+          <div className={styles.AddTitle}>Edit event!</div>
             <div>{textFields}</div>
           </Container>
         </Col>

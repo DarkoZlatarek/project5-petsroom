@@ -2,6 +2,14 @@
     min-height: 343px;
 }
 
+.AddTitle {
+    margin: auto;
+    text-align: center;
+    width: 300px;
+    font-size: 40px;
+    padding-bottom: 15px;
+}
+
 .AssetCursor:hover {
     cursor: pointer;
 }
@@ -17,6 +25,7 @@
 .BottomPaddingEventArticle {
     padding-bottom: 67px;
 }
+
 
 hr {
     width: 100%;

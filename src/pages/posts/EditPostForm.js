@@ -146,6 +146,7 @@ function EditPostForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
+          <div className={styles.AddTitle}>Edit post!</div>
             <Form.Group className="text-center">
               <figure>
                 <Image className={appStyles.Image} src={image} rounded />

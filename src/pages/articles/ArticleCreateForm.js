@@ -136,6 +136,7 @@ function ArticleCreateForm() {
         <Row className={`${styles.Row} justify-content-md-center`}>
           <Col md={7} lg={8}>
             <Container className={`${appStyles.Content} ${styles.Container}`}>
+              <div className={styles.AddTitle}>Add article!</div>
               <div>{textFields}</div>
             </Container>
           </Col>

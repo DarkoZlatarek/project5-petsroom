@@ -1,5 +1,5 @@
 # Petsroom
-The Petsroom is a social media platform for pet lovers. Here, users can share their belowed pets photos, arrange meetup events with other users and share interesting articles relating animals that might interest other users. Users can also interact with each other by commenting on posts or events.
+The Petsroom is a social media platform for pet lovers. Here, users can share their bellowed pets photos, arrange meetup events with other users and share interesting articles relating animals that might interest other users. Users can also interact with each other by commenting on posts or events.
 
 - The repository for the DRF-API associated with this project is available [HERE](https://github.com/DarkoZlatarek/petsroom-drf-api). The installation, set up, and deployment steps for this section of the project have been included in the README linked to the DRF-API. 
 
@@ -17,17 +17,13 @@ The Petsroom is a social media platform for pet lovers. Here, users can share th
     * [Communication](#communicatio)
     * [Current User Goals](#current-user-goals)
     * [New User Goals](#new-user-goals)
+    * [Future goals](#future-goals)
 * [User Stories](#user-stories)
-    * [Admin stories](#admin-stories)
-    * [Artist stories](#artist-stories)
-    * [Visitor stories](#visitor-stories)
 * [Design](#design)
-    * [Typography](#typography)
     * [Colour Scheme](#colour-scheme)
-    * [Imagery](#imagery)
+    * [Typography](#typography)
 * [Features](#features)
     * [Existing Features](#existing-features)
-    * [C.R.U.D](#crud)
 * [Testing](#testing)
     * [Validator Testing](#validator-testing)
     * [Unfixed Bugs](#unfixed-bugs)
@@ -38,7 +34,6 @@ The Petsroom is a social media platform for pet lovers. Here, users can share th
 * [Deployment](#deployment)
 * [Credits](#credits)
     * [Content](#content)
-    * [Media](#media)
 
 ## UX
 
@@ -46,7 +41,7 @@ The Petsroom is a social media platform for pet lovers. Here, users can share th
 To bring pet lovers to one place away from common social media about everything.
 
 ### Site Goal:
-Petsroom is intended to separate mainstream social media and focus only on pets by creating a space for pet lovers to share their belowed animals.
+Petsroom is intended to separate mainstream social media and focus only on pets by creating a space for pet lovers to share their bellowed animals.
 
 ### Audience:
 Everyone who likes animals and would like to scroll only through animal feeds.
@@ -189,44 +184,47 @@ The font chosen for the page is from the Google Fonts:
 
 ![Accessibility score](src/assets/readme-images/lighthouse.PNG)
 
-4. Tested the site opens in Brave, Chrome, Safari & on a mobile device without issues.
+4. Tested the site opens in Chrome and Firefox on desktop - no issues.
 
-5. All social links open to external pages as intended.
+5. Tested the site opens in Firefox, Safari and Chrome on mobile device:
+* opens and functions withour any error on Firefox, but on Safari and Chrome keeps redirecting me to home page when thrying to log in
+
 
 ### Unfixed Bugs
-Whilst it is not technically a bug, I would like to add that I am not entirely satisfied with the header of the site on mobile devices. Increasing the font size to make it stand out, causes the burger icon to shift onto a new line, which takes up too much real estate on the screen. I had attempted early on to separate out the components & have them be independent of each-other, however this then presented a new issue. When shrinking the size of the burger icon, this also shrank the expanding window, which cut off the navigation items. I was unable to ascertain how to target the exact style rule imposed by React-Bootstrap to over ride this and expand the display window, and instead compromised by implementing a smaller font-size into my heading.
+* log in functionality does not work on mobile Safari and Chrome browsers
 
 ## Technologies Used
 ### Main Languages Used
-- HTML5
-- CSS3
-- Javascript
-- Python
-- SQL - Postgres
+* HTML5
+* CSS3
+* Javascript
+* Python
+* SQL - Postgres
 
 ### Frameworks, Libraries & Programs Used
-- Google Fonts : For the site fonts.
-- Font Awesome : To add icons to the social links in the footer & navigation sections.
-- GitPod : To build the project & create the JSX & CSS files before pushing the project to Github.
-- GitHub : To store my repository for submission.
-- Balsamiq : Was used to create mockups of the project prior to starting.
-- Am I Responsive? : To ensure the project looked good across all devices.
-- Favicon : To provide the code & image for the icon in the tab bar.
-- Django : Used to build the backend database that serves as an API for the front-end project.
-- React-Bootstrap : The styling library that has aided to the layout of the site, and which was introduced to us during the course of the program.
-- DrawSQL : An interactive tool that allows for the creation of Database mock-ups so that we can visualise the relationships between models.
-- ReactJS : To build the components that would collectively form the front-end application.
+* Google Fonts
+* Font Awesome
+* GitPod
+* GitHub
+* Am I Responsive?
+* Turbologo
+* Django
+* React-Bootstrap
+* DrawSQL
+* LucidChart
+* ReactJS
 
 ## Components
 Several components have been implemented within this project that have been reused throughout the project:
 1. axiosDefault.js : for ease of communication with the backend API.
 2. Asset.js : to supply the loading spinner & user avatar throughout the site.
 3. DropdownMenu.js : to allow users to edit/delete their Articles, Events & Posts.
-4. CurrentUserContext.js : confirm users logged-in status to determine what functionality is available to that user.
-5. ProfileDataContext.js : provide un/follow ability to other users across PopProf & ProfPage components.
-6. ToggleCollapse.js : whilst this component has only been applied to the NavBarMini, it could in theory be applied to additional dropdown menus installed into the site in the future to allow for the automatic collapse of an element upon mouse click.
-7. useRedirect.js : redirects a user to another page if they are not authorised to be on the page they are trying to access.
-8. utils.js : supplies functionality to all of the components that utilise the Infinite Scroll.
+4. MoreDropdownAddIcon.js : to implement into NavBarMini component as a dropdown for "Add post/event/article"
+5. MoreDropdownNavBar.js : to implement into NavBarMini component as a dropdown for "Profile/Liked posts/Sign out"
+6. CurrentUserContext.js : confirm users logged-in status to determine what functionality is available to that user.
+7. ProfileDataContext.js : provide un/follow ability to other users across PopProf & ProfPage components.
+8. useRedirect.js : redirects a user to another page if they are not authorised to be on the page they are trying to access.
+9. utils.js : supplies functionality to all of the components that utilise the Infinite Scroll.
 
 ## Deployment
 The site was deployed to Heroku. The steps to deploy are as follows:
@@ -244,7 +242,6 @@ axios
 react-infinite-scroll-component
 msw --save-dev
 jwt-decode
--g eslint
 ```
 3. Git add, commit, and push changes to gitpod.
 4. Create the project app on Heroku, and link the GitHub repository by navigating to the 'Deploy' tab.
@@ -253,7 +250,7 @@ jwt-decode
 1. Navigated to the Heroku app of the project DRF-API, and under the Settings tab, added the following configvars:
 - Key: CLIENT_ORIGIN | Value: https://react-app-name.herokuapp.com
 - Key: CLIENT_ORIGIN_DEV | Value: https://gitpod-browser-link.ws-eu54.gitpod.io
-2. Check that the trailing slash `\` at the end of both links has been removed, and save the configvar pairs.
+2. Check that the trailing slash `/` at the end of both links has been removed, and save the configvar pairs.
 3. Install the Axios package, & create supporting `axiosDefaults.js` as shown in [Moments Walkthrough](https://github.com/Code-Institute-Solutions/moments/blob/cf955d2f2e6f70f61c92d1f9de85558d8e49f3a8/src/api/axiosDefaults.js).
 
 ### Deploy to Heroku:
@@ -268,18 +265,13 @@ web: serve -s build
 3. Repeat the steps of git add/commit/push.
 4. Deploy the project via the deploy button on Heroku.
 
-### Deploy to Render & ElephantSQL:
-* Due to Heroku revoking their frie tier access, the project has been redeployed using (Render)[https://render.com/] & (ElephantSQL)[https://www.elephantsql.com/] using the following [instructions](https://code-institute-students.github.io/deployment-docs/41-pp5-adv-fe/pp5-adv-fe-drf-01-create-a-database)
-
 ## Credits
 
 ### Content
-- Code Institute: The creation of the project came to life by utilising the Moments walkthrough step-by-step as a base foundation, and then building upon it to make the project my own. This is evident from the numerous docstrings within my files crediting the walkthrough.
-- [Mats Simonsson](https://github.com/Pelikantapeten): A fellow student & friend who consistently helps me to troubleshoot when needed, supports me constantly, and is my rubber duck.
-- [Martina Terlevic](https://github.com/SephTheOverwitch): A constant support system, providing reassurance, and the ability to calm me down.
-- [BobbyHadz](https://bobbyhadz.com/blog/react-you-are-importing-createroot-from-react-dom#:~:text=The%20error%20%22You%20are%20importing,js%20.): provided the answer on how to resolve a console error indicating that the createRoot render was not compatible with the current version of ReactJS.
-- Two events have been added to the site. The content for these was taken from the [Stavros Niarchos Foundation](https://www.snfcc.org/en/events), and the [Meet Market](https://www.themeetmarket.gr/en/). Each event has also been credited within the content body.
-
-### Media
-- 404 Error Graphic from [PNG Tree](https://pngtree.com/freepng/404-error-interface-art-word-design_4043816.html)
-- Images for the Articles, Events & Posts mad
+* Estera Zlatarek - My amazing wife who accepted not to spend time with me because of my coding whole day, bringing me food and drinks to stay fed and hydrated.
+* Code Institute: The creation of the project came to life by utilising the Moments walkthrough step-by-step as a base foundation, and then building upon it to make the project my own.
+* [Tom Ainsworth](https://github.com/Tom-Ainsworth): A fellow student & friend who consistently helped me with troubleshooting when needed.
+* Mitko Bachvarov : My tutor who provided me with guidance for the project and constant support whenever needed - answering my questions even when on holiday.
+* Tutor support team - huge help in the final stages of the project for troubleshooting any issues.
+* [Lauren-Nicole](https://github.com/CluelessBiker): Used her [README.md](https://github.com/CluelessBiker/project5-red-crayon/blob/main/README.md) from her PP5 as a template for my own.
+* Paint - good old paint where I created wireframes and color palette.
